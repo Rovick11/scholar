@@ -1,6 +1,13 @@
-<?php
+<!DOCTYPE html>
+<html>
 
-?>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
 <style>
     .activity {
         background: white;
@@ -177,19 +184,6 @@
         margin-bottom: 10px;
     }
 </style>
-
-<?php
-// Include styles in all pages
-?>
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
 
 <body>
     <div class="sidebar">
