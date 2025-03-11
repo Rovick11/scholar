@@ -1,0 +1,188 @@
+.activity {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 95%;
+}
+
+.activity h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.activity ul {
+    list-style: none;
+    padding: 0;
+}
+
+.activity ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+.activity ul li:last-child {
+    border-bottom: none;
+}
+
+.activity .timestamp {
+    font-size: 12px;
+    color: #777;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background: #007BFF;
+    height: 95vh;
+    position: fixed;
+    left: 5px;
+    top: 5px;
+    padding-top: 25px;
+    border-radius: 20px;
+    /* Soft rounded corners */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    transition: 0.3s;
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+}
+
+.sidebar ul li a:hover {
+background: white; /* Change background to white */
+color: #007BFF;    /* Change text color to match the sidebar */
+border-radius: 5px; /* Rounded corners */
+transition: background 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.sidebar .bottom-links {
+    margin-bottom: 20px;
+}
+
+.sidebar .logo {
+  display: flex;
+align-items: center;  /* Align logo and text in the same line */
+text-align: left;
+margin-bottom: -2px;
+padding-left: 30px;  /* Adds space from the sidebar edge */
+}
+
+.sidebar .logo img {
+  width: 50px;         /* Adjust logo size for better balance */
+height: auto;
+margin-right: 10px;  /* Space between logo and text */
+}
+
+.sidebar .logo-text {
+color: white;
+font-size: 20px;
+font-weight: 600;
+}
+
+.topbar {
+    width: 1225px;
+    height: 75px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    left: 260px;
+    top: 5px;
+    border-radius: 20px;
+    /* Soft rounded corners */
+}
+
+.topbar .user-info {
+    display: flex;
+    align-items: center;
+}
+
+.topbar img {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+    margin-left: 15px;
+}
+
+.topbar .notification {
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.content {
+    margin-left: 250px;
+    margin-top: 50px;
+    padding: 20px;
+    width: calc(100% - 250px);
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: linear-gradient(135deg, #007BFF, #0056b3);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 250px;
+    height: auto;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card i {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
