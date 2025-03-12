@@ -35,33 +35,40 @@
             </div>
             <div class="register-show">
                 <h2>REGISTER</h2>
+
                 <form id="registerForm" method="POST" action="{{ route('register') }}">
 
                     @csrf
-                    <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
-                    @error('firstName') <span class="text-danger">{{ $message }}</span> @enderror
+                    <div id="step1">
+                            <h3>Step 1: Personal Information</h3>
+                            <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                            @error('firstName') <span class="text-danger">{{ $message }}</span> @enderror
 
-                    <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
-                    @error('lastName') <span class="text-danger">{{ $message }}</span> @enderror
+                            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+                            @error('lastName') <span class="text-danger">{{ $message }}</span> @enderror
 
-                    <input type="text" id="email" name="email" placeholder="Email" required>
-                @error('email') <span class="text-danger">{{ $message }}</span> @enderror
+                            <input type="text" id="email" name="email" placeholder="Email" required>
+                            @error('email') <span class="text-danger">{{ $message }}</span> @enderror
 
-                    <input type="date" id="birthdate" name="birthdate" required>
-                    @error('birthdate') <span class="text-danger">{{ $message }}</span> @enderror
+                            <input type="date" id="birthdate" name="birthdate" required>
+                            @error('birthdate') <span class="text-danger">{{ $message }}</span> @enderror
+                            <input type="button" value ="Next" id="nextStep" ></input>
+                    </div>
+                    <div id="step2" style="display: none;">
+                            <h3>Step 2: Account Security</h3>
+                            <input type="password" id="password" name="password" placeholder="Password" required>
+                            @error('password') <span class="text-danger">{{ $message }}</span> @enderror
 
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                    @error('password') <span class="text-danger">{{ $message }}</span> @enderror
+                            <input type="password" id="confirmPassword" name="password_confirmation" placeholder="Confirm Password" required>
 
-                    <input type="password" id="confirmPassword" name="password_confirmation" placeholder="Confirm Password" required>
-
-                    <select id="role" name="role" required>
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                    @error('role') <span class="text-danger">{{ $message }}</span> @enderror
-
-                    <input type="button" value="Register" id="registerButton">
+                            <select id="role" name="role" required>
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                            @error('role') <span class="text-danger">{{ $message }}</span> @enderror
+                            <button type="button" id="prevStep" class="btn btn-secondary">Back</button>
+                            <input type="button" value="Register" id="registerButton">
+                    </div>
                 </form>
             </div>
         </div>
