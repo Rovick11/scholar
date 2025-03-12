@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    
     <title>Login Form</title>
 </head>
 
@@ -26,13 +27,16 @@
             <input type="radio" name="active-log-panel" id="log-login-show">
         </div>
         <div class="white-panel">
-            <div class="login-show">
-                <h2>LOGIN</h2>
-                <input type="text" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <input type="button" value="Login">
-                <a href="#">Forgot password?</a>
-            </div>
+            <form id = "loginForm" method="POST" action="{{ route('login') }}">
+            @csrf
+                    <div class="login-show">
+                        <h2>LOGIN</h2>
+                        <input type="text" name ="email" placeholder="Email" required>
+                        <input type="password" name ="password" placeholder="Password" required>
+                        <input type="button" value="Login" id = "loginButton">
+                        <a href="#">Forgot password?</a>
+                    </div>
+            </form>
             <div class="register-show">
                 <h2>REGISTER</h2>
 

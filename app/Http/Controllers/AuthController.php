@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
@@ -49,5 +49,50 @@ class AuthController extends Controller
                 'error' => $e->getMessage()
             ], 400);
         }
+    }
+
+
+    public function login(Request $request){
+
+        try{
+
+            $request->validate([
+                'email'=> "required",
+                'password'=>"required"
+            ]);
+
+            $credentials = $request->only('email', 'password');
+
+            if (Auth::attempt($credentials)){
+                $user= Auth::user();
+
+                if ($user->role === 'admin'){
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'login successful!',
+                        'role'=> $user->role
+                    ]);
+                }
+                else{
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'login successful!',
+                        'role'=> $user->role
+                    ]);
+                }
+            }
+            Log::info('User  login successfully', ['user_id' => $user->id]);
+
+          
+        } catch (\Exception $e) {
+            Log::error('login failed', ['error' => $e->getMessage()]);
+            return response()->json([
+                'success' => false,
+                'message' => 'login failed.',
+                'error' => $e->getMessage()
+            ], 400);
+        }
+
+
     }
 }
