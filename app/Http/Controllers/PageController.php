@@ -16,8 +16,18 @@ class PageController extends Controller
         return view('userdash');
     }
 
-    public function showAppSub()
+    public function showUser_AppSub()
     {
-        return view('appSub');
+        return view('user_appSub');
+    }
+
+    public function showUser_AppStatus()
+    {
+        return view('user_appStatus');
+    }
+
+    public function showUser_DocUpload()
+    {
+        return view('user_docUpload');
     }
 }

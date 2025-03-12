@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Application Submission</title>
-    <link rel="stylesheet" href="{{ asset('css/appSub.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user_appSub.css') }}">
 
 </head>
 <body>
