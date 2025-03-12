@@ -18,6 +18,7 @@ class AuthController extends Controller
             $request->validate([
                 'firstName' => 'required|string|max:255',
                 'lastName' => 'required|string|max:255',
+                'email' => 'required|email|unique:users,email', // Added email validation
                 'birthdate' => 'required|date',
                 'role' => 'required|in:user,admin',
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -28,12 +29,13 @@ class AuthController extends Controller
             $user = User::create([
                 'firstName' => $request->firstName,
                 'lastName' => $request->lastName,
-                'birthDate' => $request->birthdate, // Fixed birthdate key
+                'email' => $request->email, // Ensure email is included
+                'birthDate' => $request->birthdate,
                 'role' => $request->role,
                 'password' => Hash::make($request->password),
             ]);
 
-            Log::info('User registered successfully', ['user_id' => $user->id]);
+            Log::info('User  registered successfully', ['user_id' => $user->id]);
 
             return response()->json([
                 'success' => true,

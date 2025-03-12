@@ -44,6 +44,9 @@
                     <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
                     @error('lastName') <span class="text-danger">{{ $message }}</span> @enderror
 
+                    <input type="text" id="email" name="email" placeholder="Email" required>
+                @error('email') <span class="text-danger">{{ $message }}</span> @enderror
+
                     <input type="date" id="birthdate" name="birthdate" required>
                     @error('birthdate') <span class="text-danger">{{ $message }}</span> @enderror
 
