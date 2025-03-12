@@ -98,17 +98,16 @@ transition: background 0.3s, color 0.3s; /* Smooth transition */
 }
 
 .sidebar .logo {
-  display: flex;
-align-items: center;  /* Align logo and text in the same line */
-text-align: left;
-margin-bottom: -2px;
-padding-left: 30px;  /* Adds space from the sidebar edge */
+    display: flex;
+    text-align: left;
+    margin-bottom: -2px;
+    padding-left: 15px;  /* Adds space from the sidebar edge */
 }
 
 .sidebar .logo img {
-  width: 50px;         /* Adjust logo size for better balance */
-height: auto;
-margin-right: 10px;  /* Space between logo and text */
+    width: 50px;         /* Adjust logo size for better balance */
+    height: 50px;
+    margin-right: 5px;  /* Space between logo and text */
 }
 
 .sidebar .logo-text {

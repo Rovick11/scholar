@@ -11,12 +11,13 @@
 
 <body>
     <div class="sidebar">
-        <div class="logo">
-        <img src="{{ asset('images/logo.png') }}" alt="Logo">
-        <span class="logo-text">SCHOLAR</span>
-        </div>
+    <div class="logo">
+    <img src="{{ asset('images/logo.png') }}" alt="Logo">
+    <span class="logo-text">Municipality of Nasugbu</span>
+    <img src="{{ asset('images/logo1.png') }}" alt="Logo">
+</div>
         <ul>
-        <li><a href="applications.php"><i class="fas fa-file-alt"></i> Application Submission</a></li>
+        <li><a href="{{ route('appSub') }}"><i class="fas fa-file-alt"></i> Application Submission</a></li>
         <li><a href="applications.php"><i class="fas fa-upload"></i> Document Upload & Management</a></li>
             <li><a href="verify.php"><i class="fas fa-tasks"></i> Application Status Tracking</a></li>
             <li><a href="review.php"><i class="fas fa-bell"></i> Notifications & Alerts</a></li>

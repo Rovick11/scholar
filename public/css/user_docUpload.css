@@ -1,0 +1,52 @@
+body {
+    font-family: 'Mukta', sans-serif;
+    height: 100vh;
+    background: rgb(160, 213, 241);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.content {
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 1000px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.content h1 {
+    color: #2A5DB0;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 2px solid #2A5DB0;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #2A5DB0;
+    color: #fff;
+}
+
+.icon-btn {
+    color: #2A5DB0;
+    font-size: 18px;
+    margin: 0 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
