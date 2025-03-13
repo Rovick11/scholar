@@ -6,11 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('userdash');
+    return view('index');
 });
-Route::get('', function () {
-    return view('admindash');
-});
+
 Route::get('/user_appSub', [ApplicationSubmissionController::class, 'getUser'])->middleware('auth')->name('user_appSub');   
 Route::get('/user_appStatus', [PageController::class, 'showUser_AppStatus'])->name('user_appStatus');
 Route::get('/user_docUpload', [PageController::class, 'showUser_DocUpload'])->name('user_docUpload');
