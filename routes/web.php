@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
+    return view('userdash');
+});
+Route::get('', function () {
     return view('admindash');
 });
 
