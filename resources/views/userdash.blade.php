@@ -19,8 +19,7 @@
         <li><a href="{{ route('user_appSub') }}"><i class="fas fa-file-alt"></i> Application Submission</a></li>
         <li><a href="{{ route('user_appStatus') }}"><i class="fas fa-tasks"></i> Application Status Tracking</a></li>
         <li><a href="{{ route('user_docUpload') }}"><i class="fas fa-upload"></i> Document Upload & Management</a></li>
-            <li><a href="review.php"><i class="fas fa-bell"></i> Notifications & Alerts</a></li>
-            <li><a href="shortlist.php"><i class="fas fa-trophy"></i> Scholarship Award Dashboard </a></li>
+            <li><a href="shortlist.php"><i class="fas fa-file-alt"></i> Acceptance Form</a></li>
             <li><a href="notify.php"><i class="fas fa-redo"></i> Renewal & Reapplication </a></li>
         </ul>
         <div class="bottom-links">
@@ -32,13 +31,82 @@
     </div>
 
     <div class="topbar">
-        <div class="user-info">
-            <div class="notification">🔔</div>
-            <img src="{{ asset('images/dp.png') }}" alt="Logo">
-        <span class="logo-text">SCHOLAR</span>
+    <div class="notification">
+        <i class="fas fa-bell" onclick="toggleNotifications()"></i>
+        <span class="badge">3</span> <!-- Example: 3 unread notifications -->
+        <div class="dropdown-menu" id="notificationDropdown">
+            <h3>Notifications</h3>
+            <ul>
+                <li>
+                    <a href="#">
+                        <p>Your application has been approved.</p>
+                        <span class="timestamp">March 12, 2025</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Upcoming deadline for document submission.</p>
+                        <span class="timestamp">March 10, 2025</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>New announcement: Scholarship renewal process.</p>
+                        <span class="timestamp">March 8, 2025</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
+    <a href="javascript:void(0);" onclick="showPopup()" class="user-link">
+        <div class="user-info">
+            <img src="{{ asset('images/dp.png') }}" alt="User Image">
+            <span class="logo-text">SCHOLAR</span>
+        </div>
+    </a>
+</div>
+<!-- Overlay Background -->
+<div id="overlay" class="overlay" onclick="closePopup()"></div>
 
+<!-- Pop-up Box -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>Personal Information</h2>
+
+        <div class="input-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" value="Doe">
+        </div>
+
+        <div class="input-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" value="John">
+        </div>
+
+        <div class="input-group">
+            <label for="middle-name">Middle Name</label>
+            <input type="text" id="middle-name" value="Michael">
+        </div>
+
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" value="johndoe@example.com">
+        </div>
+
+        <div class="input-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" value="09123456789">
+        </div>
+
+        <div class="input-group">
+            <label for="birth-date">Birth Date</label>
+            <input type="date" id="birth-date" value="2000-01-01">
+        </div>
+
+        <button onclick="saveDetails()">Save</button>
+    </div>
+</div>
+<script src="{{ asset('js/userdash.js') }}"></script>
 </body>
-
 </html>
