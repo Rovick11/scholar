@@ -30,4 +30,5 @@ class PageController extends Controller
     {
         return view('user_docUpload');
     }
+    
 }

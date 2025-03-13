@@ -21,7 +21,8 @@ class AuthController extends Controller
                 'email' => 'required|email|unique:users,email', // Added email validation
                 'birthdate' => 'required|date',
                 'role' => 'required|in:user,admin',
-                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+                'contact' => 'required|string|max:10',
+                'password' => ['required', 'confirmed', Rules\Password::defaults()]
             ]);
 
             Log::info('Validation passed');
@@ -32,6 +33,7 @@ class AuthController extends Controller
                 'email' => $request->email, // Ensure email is included
                 'birthDate' => $request->birthdate,
                 'role' => $request->role,
+                'contactNo' => $request->contact,
                 'password' => Hash::make($request->password),
             ]);
 

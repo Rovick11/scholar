@@ -78,7 +78,6 @@ $(document).ready(function () {
                     Swal.fire({
                         icon: "success",
                         title: "Login Successful",
-                        text: response.message,
                         confirmButtonColor: "#3085d6",
                         heightAuto: false
                     }).then(() => {
