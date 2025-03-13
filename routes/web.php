@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('index');
+    return view('userdash');
 });
 
 Route::get('/user_appSub', [PageController::class, 'showUser_AppSub'])->name('user_appSub');
