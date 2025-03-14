@@ -30,4 +30,28 @@ class PageController extends Controller
     {
         return view('user_docUpload');
     }
+    public function showadmindash()
+    {
+        return view('admindash');
+    }
+
+    public function showAdmin_ScholarMan()
+    {
+        return view('admin_scholarMan');
+    }
+
+    public function showAdmin_UserAppMan()
+    {
+        return view('admin_userAppMan');
+    }
+
+    public function showAdmin_ScholarAward()
+    {
+        return view('admin_scholarAward');
+    }
+
+    public function showAdmin_ReportAna()
+    {
+        return view('admin_reportAna');
+    }
 }

@@ -175,3 +175,26 @@ a {
     top: 50%;
     transform: translateY(-50%);
 }
+
+
+.phone-group {
+    display: flex;
+    align-items: center;
+    }
+    
+    .phone-prefix {
+    background-color: #e0e0e0;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    }
+    
+    .phone-input {
+    flex: 1;
+    border: 2px solid #ccc;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    padding: 15px;
+    box-sizing: border-box;
+    }

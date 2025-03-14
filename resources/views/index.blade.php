@@ -53,9 +53,13 @@
 
                             <input type="text" id="email" name="email" placeholder="Email" required>
                             @error('email') <span class="text-danger">{{ $message }}</span> @enderror
+                           
 
                             <input type="date" id="birthdate" name="birthdate" required>
                             @error('birthdate') <span class="text-danger">{{ $message }}</span> @enderror
+                            <span class="phone-prefix">+63</span>
+                            <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="9123456789"
+                             maxlength="10" required class="phone-input"></input>
                             <input type="button" value ="Next" id="nextStep" ></input>
                     </div>
                     <div id="step2" style="display: none;">
@@ -67,7 +71,7 @@
 
                             <select id="role" name="role" required>
                                 <option value="user">User</option>
-                                <option value="admin">Admin</option>
+                                <option value="pending">Admin</option>
                             </select>
                             @error('role') <span class="text-danger">{{ $message }}</span> @enderror
                             <button type="button" id="prevStep" class="btn btn-secondary">Back</button>
