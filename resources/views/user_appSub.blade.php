@@ -42,7 +42,7 @@
             @php
                 $isPending = $applicationStatus === 'pending';
             @endphp
-            <input type="submit" value="Submit Application" class="submit-btn {{ $isPending ? 'disabled-btn' : '' }}" id="appButton" {{ $isPending ? 'disabled' : '' }}>
+            <input type="button" value="Submit Application" class="submit-btn {{ $isPending ? 'disabled-btn' : '' }}" id="appButton" {{ $isPending ? 'disabled' : '' }}>
         </form>
     </div>
     
