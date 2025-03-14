@@ -81,20 +81,33 @@ $(document).ready(function () {
                         confirmButtonColor: "#3085d6",
                         heightAuto: false
                     }).then(() => {
-                        if (response.role === "admin") {
+                        if (response.role === "superAdmin" || response.role === "admin") {
                             window.location.href = "/admindash";
-                        } else {
+                        } else if (response.role === "user"){
                             window.location.href = "/userdash";
                         }
+                     
                     });
                 } else {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Login Failed",
-                        text: response.message,
-                        confirmButtonColor: "#d33",
-                        heightAuto: false
-                    });
+
+                     if (response.role === "pending"){
+                        Swal.fire({
+                           icon: "warning",
+                            title: "Your account is pending approval",
+                            text: "Please wait for an administrator to approve your account.",
+                            confirmButtonColor: "#f1c40f",
+                            heightAuto: false
+                        });
+                    }
+                    else{
+                        Swal.fire({
+                            icon: "error",
+                            title: "Login Failed",
+                            text: response.message,
+                            confirmButtonColor: "#d33",
+                            heightAuto: false
+                        });
+                    }
                 }
             },
             error: function (xhr) {
@@ -120,6 +133,49 @@ $(document).ready(function () {
                     html: errorMessage, // Use 'html' to properly format error messages
                     confirmButtonColor: "#d33",
                     heightAuto: false
+                });
+            }
+        });
+    });
+
+    $("#logoutButton").click(function (event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You will be logged out.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, logout"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: logoutUrl, // Laravel logout route
+                    type: "POST",
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content") // Correct CSRF token
+                    },
+                    success: function () {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Logged out successfully",
+                            confirmButtonColor: "#3085d6",
+                            heightAuto: false
+                        }).then(() => {
+                            window.location.href = "/"; // Redirect after logout
+                        });
+                    },
+                    error: function () {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Logout Failed",
+                            text: "Something went wrong. Please try again.",
+                            confirmButtonColor: "#d33",
+                            heightAuto: false
+                        });
+                    }
                 });
             }
         });

@@ -20,7 +20,7 @@ class AuthController extends Controller
                 'lastName' => 'required|string|max:255',
                 'email' => 'required|email|unique:users,email', // Added email validation
                 'birthdate' => 'required|date',
-                'role' => 'required|in:user,admin',
+                'role' => 'required|in:user,pending',
                 'contact' => 'required|string|max:10',
                 'password' => ['required', 'confirmed', Rules\Password::defaults()]
             ]);
@@ -68,7 +68,14 @@ class AuthController extends Controller
             if (Auth::attempt($credentials)){
                 $user= Auth::user();
 
-                if ($user->role === 'admin'){
+                if ($user->role === 'superAdmin' || $user->role === 'admin'){
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'login successful!',
+                        'role'=> $user->role
+                    ]);
+                }
+                if ($user->role === 'user'){
                     return response()->json([
                         'success' => true,
                         'message' => 'login successful!',
@@ -77,8 +84,7 @@ class AuthController extends Controller
                 }
                 else{
                     return response()->json([
-                        'success' => true,
-                        'message' => 'login successful!',
+                        'success' => false,
                         'role'=> $user->role
                     ]);
                 }
@@ -95,6 +101,34 @@ class AuthController extends Controller
             ], 400);
         }
 
+
+    }
+
+    public function logout(Request $request){
+
+        try{
+
+            Auth::logout();
+
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            return response ()->json([
+
+                'success' => true,
+                'message' => 'Successfully Logout',
+        
+            ]);
+
+            Log::info('logout successfully');
+
+            } catch(\Exception $e){
+
+            return response()->json([
+                'success'=> false,
+                'error' => $e->getMessage()
+            ]);
+            }
 
     }
 }

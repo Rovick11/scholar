@@ -71,7 +71,7 @@
 
                             <select id="role" name="role" required>
                                 <option value="user">User</option>
-                                <option value="admin">Admin</option>
+                                <option value="pending">Admin</option>
                             </select>
                             @error('role') <span class="text-danger">{{ $message }}</span> @enderror
                             <button type="button" id="prevStep" class="btn btn-secondary">Back</button>

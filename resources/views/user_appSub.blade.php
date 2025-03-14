@@ -39,8 +39,10 @@
             <div class="form-group">
                 <input type="file" id="indigency" name="indigency" accept=".pdf,.doc,.docx,.jpg,.png" required>
             </div>
-
-            <input type="button" value="Submit Application" class="submit-btn" id = "appButton">
+            @php
+                $isPending = $applicationStatus === 'pending';
+            @endphp
+            <input type="submit" value="Submit Application" class="submit-btn {{ $isPending ? 'disabled-btn' : '' }}" id="appButton" {{ $isPending ? 'disabled' : '' }}>
         </form>
     </div>
     
