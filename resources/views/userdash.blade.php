@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{ asset('css/userdash.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>
 
 <body>
@@ -25,7 +27,7 @@
         <div class="bottom-links">
             <ul>
                 <li><a href="contact.php"><i class="fas fa-comments"></i> Communication & Support </a></li>
-                <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <li><a href="#" id ="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </div>
     </div>
@@ -107,6 +109,13 @@
         <button onclick="saveDetails()">Save</button>
     </div>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    var logoutUrl = "{{ route('logout') }}";
+</script>
+<script src="{{ asset('js/login.js') }}"></script>
 <script src="{{ asset('js/userdash.js') }}"></script>
 </body>
 </html>
