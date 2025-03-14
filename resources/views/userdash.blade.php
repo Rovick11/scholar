@@ -65,6 +65,27 @@
         </div>
     </a>
 </div>
+
+<!-- Chat Button -->
+<div class="chat-button" onclick="toggleChatBox()">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Chat Box -->
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <span>Support Chat</span>
+            <button class="close-chat" onclick="toggleChatBox()">&times;</button>
+        </div>
+        <div class="chat-body">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Type your message..." />
+            <button>Send</button>
+        </div>
+    </div>
+    
 <!-- Overlay Background -->
 <div id="overlay" class="overlay" onclick="closePopup()"></div>
 
