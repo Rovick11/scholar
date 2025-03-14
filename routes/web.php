@@ -18,7 +18,7 @@ Route::get('/user_docUpload', [PageController::class, 'showUser_DocUpload'])->na
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/user_appSub', [ApplicationSubmissionController::class, 'applicationForm'])->middleware('auth')->name('applicationForm');
-Route::get('/submissions', [ApplicationSubmissionController::class, 'showSubmissions'])->name('admin_userAppMan');
+Route::get('/admin_userAppMan', [ApplicationSubmissionController::class, 'showSubmissions'])->name('admin_userAppMan');
 Route::post('/logout', [AuthController::class,  'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
@@ -34,6 +34,5 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/admindash', [PageController::class, 'showadmindash'])->name('admindash');
 Route::get('/scholarman', [PageController::class, 'showAdmin_ScholarMan'])->name('admin_scholarMan');
-
 Route::get('/admin_scholarAward', [PageController::class, 'showAdmin_ScholarAward'])->name('admin_scholarAward');
 Route::get('/admin_reportAna', [PageController::class, 'showAdmin_ReportAna'])->name('admin_reportAna');
