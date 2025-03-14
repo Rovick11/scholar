@@ -9,7 +9,7 @@ class ApplicationSubmission extends Model
 {
  
 
-    protected $fillable = ['user_id','COR', 'indigency Certificate', 'gradesForm'];
+    protected $fillable = ['user_id','COR', 'indigency Certificate', 'gradesForm', 'status'];
 
     public function user(){
         return $this->belongsTo(User::class);

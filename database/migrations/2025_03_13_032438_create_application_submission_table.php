@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('COR');
             $table->string('indigency Certificate');
             $table->string('gradesForm');
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

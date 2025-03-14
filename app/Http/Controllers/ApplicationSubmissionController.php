@@ -42,6 +42,7 @@ class ApplicationSubmissionController extends Controller
                 'COR' => null,
                 'gradesForm' => null,
                 'indigency Certificate' => null,
+                'status' => 'pending',
             ];
 
             $fileMappings = [
@@ -77,5 +78,20 @@ class ApplicationSubmissionController extends Controller
             ], 400);
         }
     }
-
+    public function showSubmissions(Request $request)
+    {
+        // Fetch all application submissions with status 'pending'
+        $submissions = ApplicationSubmission::where('status', 'pending')->get();
+    
+        // Debugging: Check if submissions are fetched
+        if ($submissions->isEmpty()) {
+            Log::info('No submissions found.');
+        } else {
+            Log::info('Submissions found:', $submissions->toArray());
+        }
+    
+        // Pass the submissions to the view
+        return view('admin_userAppMan', compact('submissions'));
+    }
+    
 }

@@ -10,44 +10,45 @@
 
 <body>
     @include('admin_navbar')
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/admin_userAppMan.css') }}">
+    <title>User & Application Management</title>
+</head>
+<body>
+    @include('admin_navbar')
     <div class="container">
         <table>
             <tr>
                 <th>Name</th>
-                <th>Uploaded File</th>
-                <th>Date</th>
-                <th>Status</th>
+                <th>Uploaded Files</th>
+                <th>Date Submitted</th>
                 <th>Actions</th>
             </tr>
-            <tr>
-                <td>John Doe</td>
-                <td><a href="#" class="file-link">Resume.pdf</a></td>
-                <td>2024-03-12</td>
-                <td class="status pending">Pending</td>
-                <td class="action-buttons">
-                    <button class="approve">Approve</button>
-                    <button class="reject">Reject</button>
-                    <textarea placeholder="Add a comment..."></textarea>
-                    <button class="save-comment">Save Comment</button>
-                    <button class="edit">Edit</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Jane Smith</td>
-                <td><a href="#" class="file-link">Portfolio.pdf</a></td>
-                <td>2024-03-10</td>
-                <td class="status under-review">Under Review</td>
-                <td class="action-buttons">
-                    <button class="approve">Approve</button>
-                    <button class="reject">Reject</button>
-                    <textarea placeholder="Add a comment..."></textarea>
-                    <button class="save-comment">Save Comment</button>
-                    <button class="edit">Edit</button>
-                </td>
-            </tr>
+            @foreach ($submissions as $submission)
+                <tr>
+                    <td>{{ $submission->user->firstName . ' ' . $submission->user->lastName }}</td>
+                    <td>
+                        <a href="{{ Storage::url($submission->COR) }}" class="file-link">COR</a>
+                        <a href="{{ Storage::url($submission->gradesForm) }}" class="file-link">Grades</a>
+                        <a href="{{ Storage::url($submission->indigency_Certificate) }}" class="file-link">Indigency</a>
+                    </td>
+                    <td>{{ $submission->created_at->format('Y-m-d') }}</td>
+                    <td class="action-buttons">
+                        <button class="approve" data-id="{{ $submission->id }}">Approve</button>
+                        <button class="reject" data-id="{{ $submission->id }}">Reject</button>
+                        <textarea placeholder="Add a comment..."></textarea>
+                        <button class="save-comment" data-id="{{ $submission->id }}">Save Comment</button>
+                        <button class="edit" data-id="{{ $submission->id }}">Edit</button>
+                    </td>
+                </tr>
+            @endforeach
         </table>
     </div>
-
+    
     <script>
         document.querySelectorAll('.reject').forEach(button => {
             button.addEventListener('click', function () {
