@@ -21,7 +21,7 @@
         <li><a href="{{ route('user_appSub') }}"><i class="fas fa-file-alt"></i> Application Submission</a></li>
         <li><a href="{{ route('user_appStatus') }}"><i class="fas fa-tasks"></i> Application Status Tracking</a></li>
         <li><a href="{{ route('user_docUpload') }}"><i class="fas fa-upload"></i> Document Upload & Management</a></li>
-            <li><a href="shortlist.php"><i class="fas fa-file-alt"></i> Acceptance Form</a></li>
+        <li><a href="{{ route('user_acceptForm') }}"><i class="fas fa-file-alt"></i> Acceptance Form</a></li>
             <li><a href="notify.php"><i class="fas fa-redo"></i> Renewal & Reapplication </a></li>
         </ul>
         <div class="bottom-links">
@@ -67,6 +67,27 @@
         </div>
     </a>
 </div>
+
+<!-- Chat Button -->
+<div class="chat-button" onclick="toggleChatBox()">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Chat Box -->
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <span>Support Chat</span>
+            <button class="close-chat" onclick="toggleChatBox()">&times;</button>
+        </div>
+        <div class="chat-body">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Type your message..." />
+            <button>Send</button>
+        </div>
+    </div>
+    
 <!-- Overlay Background -->
 <div id="overlay" class="overlay" onclick="closePopup()"></div>
 

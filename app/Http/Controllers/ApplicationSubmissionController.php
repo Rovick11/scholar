@@ -142,5 +142,19 @@ class ApplicationSubmissionController extends Controller
         }
     }
 
-
+    public function approveSubmission(Request $request, $id)
+    {
+        // Find the submission by ID
+        $submission = ApplicationSubmission::find($id);
+    
+        if (!$submission) {
+            return response()->json(['success' => false, 'message' => 'Submission not found.'], 404);
+        }
+    
+        // Update the status to 'approved'
+        $submission->status = 'approved';
+        $submission->save();
+    
+        return response()->json(['success' => true, 'message' => 'Submission approved successfully.']);
+    }
 }
