@@ -54,4 +54,14 @@ class PageController extends Controller
     {
         return view('admin_reportAna');
     }
+
+    public function showAdmin_AddNewSem()
+    {
+        return view('admin_addNewSem');
+    }
+
+    public function showAdmin_History()
+    {
+        return view('admin_history');
+    }
 }

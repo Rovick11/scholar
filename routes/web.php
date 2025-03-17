@@ -6,20 +6,21 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('index');
+    return view('admindash');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/user_appStatus', [ApplicationSubmissionController::class, 'showApplicationStatus'])->name('user_appStatus');;
+    Route::get('/user_appStatus', [ApplicationSubmissionController::class, 'showApplicationStatus'])->name('user_appStatus');
+    ;
 });
 
-Route::get('/user_appSub', [ApplicationSubmissionController::class, 'getUser'])->middleware('auth')->name('user_appSub');   
+Route::get('/user_appSub', [ApplicationSubmissionController::class, 'getUser'])->middleware('auth')->name('user_appSub');
 Route::get('/user_docUpload', [PageController::class, 'showUser_DocUpload'])->name('user_docUpload');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/user_appSub', [ApplicationSubmissionController::class, 'applicationForm'])->middleware('auth')->name('applicationForm');
 Route::get('/admin_userAppMan', [ApplicationSubmissionController::class, 'showSubmissions'])->name('admin_userAppMan');
-Route::post('/logout', [AuthController::class,  'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/userdash', function () {
@@ -36,3 +37,5 @@ Route::get('/admindash', [PageController::class, 'showadmindash'])->name('admind
 Route::get('/scholarman', [PageController::class, 'showAdmin_ScholarMan'])->name('admin_scholarMan');
 Route::get('/admin_scholarAward', [PageController::class, 'showAdmin_ScholarAward'])->name('admin_scholarAward');
 Route::get('/admin_reportAna', [PageController::class, 'showAdmin_ReportAna'])->name('admin_reportAna');
+Route::get('/admin_addNewSem', [PageController::class, 'showAdmin_AddNewSem'])->name('admin_addNewSem');
+Route::get('/admin_history', [PageController::class, 'showAdmin_History'])->name('admin_history');

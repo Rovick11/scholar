@@ -121,3 +121,76 @@ body {
     padding: 20px;
     width: 20%;
 }
+
+.notification {
+    position: relative;
+    margin-right: right;
+    /* Aligns to the left */
+    cursor: pointer;
+}
+
+.notification .fas.fa-bell {
+    font-size: 26px;
+    color: #555;
+    margin-right: 15px;
+}
+
+.notification .badge {
+    position: absolute;
+    top: -12px;
+    right: -10px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 10px;
+    font-size: 12px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    left: -150px;
+    top: 50px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 300px;
+    z-index: 1000;
+
+}
+
+.dropdown-menu h3 {
+    margin: 0;
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu ul li {
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown-menu ul li a {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-menu ul li a:hover {
+    background: #f8f9fa;
+}
+
+.timestamp {
+    display: block;
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+}
