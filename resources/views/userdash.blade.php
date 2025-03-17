@@ -26,7 +26,6 @@
         </ul>
         <div class="bottom-links">
             <ul>
-                <li><a href="contact.php"><i class="fas fa-comments"></i> Communication & Support </a></li>
                 <li><a href="#" id ="logoutButton"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </div>
