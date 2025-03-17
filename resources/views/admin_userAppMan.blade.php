@@ -24,7 +24,7 @@
                     <td>
                         <a href="{{ Storage::url($submission->COR) }}" class="file-link">COR</a>
                         <a href="{{ Storage::url($submission->gradesForm) }}" class="file-link">Grades</a>
-                        <a href="{{ Storage::url($submission->indigency_Certificate) }}" class="file-link">Indigency</a>
+                        <a href="{{ Storage::url($submission->indigencyCertificate) }}" class="file-link">Indigency</a>
                     </td>
                     <td>{{ $submission->created_at->format('Y-m-d') }}</td>
                     <td class="action-buttons">
