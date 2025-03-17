@@ -10,16 +10,6 @@
 
 <body>
     @include('admin_navbar')
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/admin_userAppMan.css') }}">
-    <title>User & Application Management</title>
-</head>
-<body>
-    @include('admin_navbar')
     <div class="container">
         <table>
             <tr>
@@ -40,9 +30,9 @@
                     <td class="action-buttons">
                         <button class="approve" data-id="{{ $submission->id }}">Approve</button>
                         <button class="reject" data-id="{{ $submission->id }}">Reject</button>
-                        <textarea placeholder="Add a comment..."></textarea>
-                        <button class="save-comment" data-id="{{ $submission->id }}">Save Comment</button>
-                        <button class="edit" data-id="{{ $submission->id }}">Edit</button>
+                        <textarea placeholder="Add a comment..." style="display:none;"></textarea>
+                        <button class="save-comment" data-id="{{ $submission->id }}" style="display:none;">Save Comment</button>
+                        <button class="edit" data-id="{{ $submission->id }}" style="display:none;">Edit</button>
                     </td>
                 </tr>
             @endforeach
@@ -50,83 +40,103 @@
     </div>
     
     <script>
-        document.querySelectorAll('.reject').forEach(button => {
-            button.addEventListener('click', function () {
-                let row = this.closest('tr');
-                let commentBox = row.querySelector('textarea');
-                let saveBtn = row.querySelector('.save-comment');
-                let editBtn = row.querySelector('.edit');
+    document.querySelectorAll('.reject').forEach(button => {
+        button.addEventListener('click', function () {
+            let row = this.closest('tr');
+            let commentBox = row.querySelector('textarea');
+            let saveBtn = row.querySelector('.save-comment');
+            let editBtn = row.querySelector('.edit');
 
-                // Show comment box, save button, and edit button
-                commentBox.style.display = 'block';
-                saveBtn.style.display = 'block';
-                editBtn.style.display = 'block';
-            });
+            // Show comment box, save button, and edit button
+            commentBox.style.display = 'block';
+            saveBtn.style.display = 'block';
+            editBtn.style.display = 'block';
         });
+    });
 
-        document.querySelectorAll('.approve').forEach(button => {
-            button.addEventListener('click', function () {
-                let row = this.closest('tr');
-                let status = row.querySelector('.status');
-                let commentBox = row.querySelector('textarea');
-                let saveBtn = row.querySelector('.save-comment');
-                let editBtn = row.querySelector('.edit');
+    document.querySelectorAll('.approve').forEach(button => {
+        button.addEventListener('click', function () {
+            // Confirmation dialog
+            if (!confirm('Are you sure you want to approve this submission?')) {
+                return; // Exit if the user clicks "Cancel"
+            }
 
-                // Change status to Approved
-                status.textContent = 'Approved';
-                status.classList = 'status approved';
+            let row = this.closest('tr');
+            let submissionId = this.getAttribute('data-id'); // Get the submission ID
+            let commentBox = row.querySelector('textarea');
+            let saveBtn = row.querySelector('.save-comment');
+            let editBtn = row.querySelector('.edit');
 
-                // Hide comment-related elements
-                commentBox.style.display = 'none';
-                saveBtn.style.display = 'none';
-                editBtn.style.display = 'none';
+            // Send AJAX request to update the status
+            fetch(`/submissions/${submissionId}/approve`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token for security
+                },
+                body: JSON.stringify({ status: 'approved' }) // Send the new status
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Optionally, you can show a success message
+                    alert('Submission approved successfully.');
 
-                // Disable all action buttons after approval
-                button.disabled = true;
-                row.querySelector('.reject').disabled = true;
-            });
-        });
+                    // Hide comment-related elements
+                    commentBox.style.display = 'none';
+                    saveBtn.style.display = 'none';
+                    editBtn.style.display = 'none';
 
-        document.querySelectorAll('.save-comment').forEach(button => {
-            button.addEventListener('click', function () {
-                let row = this.closest('tr');
-                let commentBox = row.querySelector('textarea');
-                let status = row.querySelector('.status');
-                let editBtn = row.querySelector('.edit');
-
-                if (commentBox.value.trim() === '') {
-                    alert('Please enter a comment before saving.');
-                    return;
+                    // Disable all action buttons after approval
+                    button.disabled = true;
+                    row.querySelector('.reject').disabled = true;
+                } else {
+                    alert('Failed to approve submission: ' + data.message);
                 }
-
-                // Change status to Rejected
-                status.textContent = 'Rejected';
-                status.classList = 'status rejected';
-
-                alert('Comment saved: ' + commentBox.value);
-
-                // Disable comment box and save button
-                commentBox.disabled = true;
-                button.disabled = true;
-                row.querySelector('.reject').disabled = true;
-
-                // Show edit button for rejected comments
-                editBtn.style.display = 'inline-block';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while approving the submission.');
             });
         });
+    });
 
-        document.querySelectorAll('.edit').forEach(button => {
-            button.addEventListener('click', function () {
-                let row = this.closest('tr');
-                let commentBox = row.querySelector('textarea');
-                let saveBtn = row.querySelector('.save-comment');
+    document.querySelectorAll('.save-comment').forEach(button => {
+        button.addEventListener('click', function () {
+            let row = this.closest('tr');
+            let commentBox = row.querySelector('textarea');
+            let editBtn = row.querySelector('.edit');
 
-                // Enable editing
-                commentBox.disabled = false;
-                saveBtn.disabled = false;
-            });
+            if (commentBox.value.trim() === '') {
+                alert('Please enter a comment before saving.');
+                return;
+            }
+
+            // Optionally, you can show a success message
+            alert('Comment saved: ' + commentBox.value);
+
+            // Disable comment box and save button
+            commentBox.disabled = true;
+            button.disabled = true;
+            row.querySelector('.reject').disabled = true;
+
+            // Show edit button for rejected comments
+            editBtn.style.display = 'inline-block';
         });
-    </script>
+    });
+
+    document.querySelectorAll('.edit').forEach(button => {
+        button.addEventListener('click', function () {
+            let row = this.closest('tr');
+            let commentBox = row.querySelector('textarea');
+            let saveBtn = row.querySelector('.save-comment');
+
+            // Enable editing
+            commentBox.disabled = false;
+            saveBtn.disabled = false;
+        });
+    });
+</script>
 </body>
 
 </html>
