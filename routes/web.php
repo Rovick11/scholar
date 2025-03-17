@@ -21,6 +21,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/user_appSub', [ApplicationSubmissionController::class, 'applicationForm'])->middleware('auth')->name('applicationForm');
 Route::get('/admin_userAppMan', [ApplicationSubmissionController::class, 'showSubmissions'])->name('admin_userAppMan');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/submissions/{id}/approve', [ApplicationSubmissionController::class, 'approveSubmission'])->name('submissions.approve');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/userdash', function () {
