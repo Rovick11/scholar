@@ -11,10 +11,10 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/user_appStatus', [ApplicationSubmissionController::class, 'showApplicationStatus'])->name('user_appStatus');
-    ;
+    
 });
 
-Route::get('/user_appSub', [ApplicationSubmissionController::class, 'getUser'])->middleware('auth')->name('user_appSub');
+Route::get('/user_appSub', [ApplicationSubmissionController::class, 'getUser'])->middleware('auth')->name('user_appSub');   
 Route::get('/user_docUpload', [PageController::class, 'showUser_DocUpload'])->name('user_docUpload');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');

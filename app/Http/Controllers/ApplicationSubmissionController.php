@@ -28,6 +28,25 @@ class ApplicationSubmissionController extends Controller
         return view('user_appSub', compact('user', 'applicationStatus'));
     }
 
+    public function getUserDoc(Request $request){
+
+        $user = Auth::user();
+        $application = ApplicationSubmission::where('user_id', $user->id)->latest()->first();
+
+    
+        if (!$user) {
+            Log::error('Auth::user() returned null. User not authenticated.');
+            abort(403, 'User not authenticated');
+        }
+    
+        Log::info('Authenticated user:', ['id' => $user->id, 'name' => $user->firstName . ' ' . $user->lastName]);
+
+    
+        return view('user_docUpload', compact('application'));
+
+
+    }
+
     public function applicationForm(Request $request)
     {
         try {

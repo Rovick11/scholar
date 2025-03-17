@@ -16,31 +16,45 @@
                 <th>File Names</th>
                 <th>Action</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Certificate of Registration.pdf</td>
-                <td>
-                    <a href="#" class="icon-btn"><i class="fas fa-eye"></i></a>
-                    <a href="#" class="icon-btn"><i class="fas fa-edit"></i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Grades Form.pdf</td>
-                <td>
-                    <a href="#" class="icon-btn"><i class="fas fa-eye"></i></a>
-                    <a href="#" class="icon-btn"><i class="fas fa-edit"></i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Indigency Certificate.pdf</td>
-                <td>
-                    <a href="#" class="icon-btn"><i class="fas fa-eye"></i></a>
-                    <a href="#" class="icon-btn"><i class="fas fa-edit"></i></a>
-                </td>
-            </tr>
-        </table>
+            @if($application) 
+                @php
+                    $files = [
+                        'Certificate of Registration.pdf' => $application->COR ?? '',
+                        'Grades Form.pdf' => $application->gradesForm ?? '',
+                        'Indigency Certificate.pdf' => $application->indigencyCertificate ?? ''
+                    ];
+                    $fileCount = count(array_filter($files));
+                @endphp
+
+                @if($fileCount > 0)
+                    @php $firstRow = true; @endphp
+                    @foreach($files as $fileName => $filepath)
+                        @if(!empty($filepath))
+                            <tr>
+                                @if($firstRow)
+                                    <td rowspan="{{ $fileCount }}">{{ $fileCount }}</td>
+                                    @php $firstRow = false; @endphp
+                                @endif
+                                <td>{{ $fileName }}</td>
+                                <td>
+                                    <a href="{{ asset('storage/' . $filepath) }}" class="icon-btn"><i class="fas fa-eye"></i></a>
+                                    <a href="#" class="icon-btn"><i class="fas fa-edit"></i></a>
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                @else
+                    <tr>
+                        <td colspan="3">No application documents found.</td>
+                    </tr>
+                @endif
+            @else
+                <tr>
+                    <td colspan="3">No application documents found.</td>
+                </tr>
+            @endif
+
+
     </div>
 </body>
 </html>
