@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('index');
+    return view('userdash');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -40,3 +40,5 @@ Route::get('/admin_scholarAward', [PageController::class, 'showAdmin_ScholarAwar
 Route::get('/admin_reportAna', [PageController::class, 'showAdmin_ReportAna'])->name('admin_reportAna');
 Route::get('/admin_addNewSem', [PageController::class, 'showAdmin_AddNewSem'])->name('admin_addNewSem');
 Route::get('/admin_history', [PageController::class, 'showAdmin_History'])->name('admin_history');
+
+Route::get('/user_acceptForm', [PageController::class, 'showUser_AcceptForm'])->name('user_acceptForm');

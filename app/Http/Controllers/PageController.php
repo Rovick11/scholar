@@ -30,6 +30,12 @@ class PageController extends Controller
     {
         return view('user_docUpload');
     }
+
+    public function showUser_AcceptForm()
+    {
+        return view('user_acceptForm');
+    }
+
     public function showadmindash()
     {
         return view('admindash');
