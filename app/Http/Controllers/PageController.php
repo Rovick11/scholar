@@ -36,6 +36,11 @@ class PageController extends Controller
         return view('user_acceptForm');
     }
 
+    public function showUser_Renewal()
+    {
+        return view('user_renewal');
+    }
+
     public function showadmindash()
     {
         return view('admindash');

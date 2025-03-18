@@ -42,4 +42,5 @@ Route::get('/admin_reportAna', [PageController::class, 'showAdmin_ReportAna'])->
 Route::get('/admin_addNewSem', [PageController::class, 'showAdmin_AddNewSem'])->name('admin_addNewSem');
 Route::get('/admin_history', [PageController::class, 'showAdmin_History'])->name('admin_history');
 Route::get('/user_acceptForm', [PageController::class, 'showUser_AcceptForm'])->name('user_acceptForm');
+Route::get('/user_renewal', [PageController::class, 'showUser_Renewal'])->name('user_renewal');
 Route::put('/documents/update/{id}', [ApplicationSubmissionController::class, 'update'])->name('document.update');
