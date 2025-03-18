@@ -42,3 +42,4 @@ Route::get('/admin_addNewSem', [PageController::class, 'showAdmin_AddNewSem'])->
 Route::get('/admin_history', [PageController::class, 'showAdmin_History'])->name('admin_history');
 
 Route::get('/user_acceptForm', [PageController::class, 'showUser_AcceptForm'])->name('user_acceptForm');
+Route::get('/user_renewal', [PageController::class, 'showUser_Renewal'])->name('user_renewal');
