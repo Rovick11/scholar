@@ -11,11 +11,12 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/user_appStatus', [ApplicationSubmissionController::class, 'showApplicationStatus'])->name('user_appStatus');
-    
+    ;
 });
 
 Route::get('/user_appSub', [ApplicationSubmissionController::class, 'getUser'])->middleware('auth')->name('user_appSub');   
-Route::get('/user_docUpload', [PageController::class, 'showUser_DocUpload'])->name('user_docUpload');
+Route::get('/user_docUpload', [ApplicationSubmissionController::class, 'getUserDoc'])->middleware('auth')->name('user_docUpload');   
+Route::get('/user_appSub', [ApplicationSubmissionController::class, 'getUser'])->middleware('auth')->name('user_appSub');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/user_appSub', [ApplicationSubmissionController::class, 'applicationForm'])->middleware('auth')->name('applicationForm');
@@ -40,5 +41,6 @@ Route::get('/admin_scholarAward', [PageController::class, 'showAdmin_ScholarAwar
 Route::get('/admin_reportAna', [PageController::class, 'showAdmin_ReportAna'])->name('admin_reportAna');
 Route::get('/admin_addNewSem', [PageController::class, 'showAdmin_AddNewSem'])->name('admin_addNewSem');
 Route::get('/admin_history', [PageController::class, 'showAdmin_History'])->name('admin_history');
-
 Route::get('/user_acceptForm', [PageController::class, 'showUser_AcceptForm'])->name('user_acceptForm');
+Route::get('/user_renewal', [PageController::class, 'showUser_Renewal'])->name('user_renewal');
+Route::put('/documents/update/{id}', [ApplicationSubmissionController::class, 'update'])->name('document.update');

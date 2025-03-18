@@ -6,6 +6,7 @@ use App\Models\ApplicationSubmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class ApplicationSubmissionController extends Controller
 {
@@ -51,9 +52,9 @@ class ApplicationSubmissionController extends Controller
     {
         try {
             $request->validate([
-                'cor' => 'required|mimes:pdf|max:5048',
-                'grades' => 'required|mimes:pdf|max:5048',
-                'indigency' => 'required|mimes:pdf|max:5048',
+                'cor' => 'required|mimes:pdf,jpg,jpeg,png,doc,docx|max:5048',
+                'grades' => 'required|mimes:pdf,jpg,jpeg,png,doc,docx|max:5048',
+                'indigency' => 'required|mimes:pdf,jpg,jpeg,png,doc,docx|max:5048',
             ]);
 
             $user = Auth::user();
@@ -71,16 +72,18 @@ class ApplicationSubmissionController extends Controller
                 'grades' => 'gradesForm',
                 'indigency' => 'indigencyCertificate'
             ];
+            $userId = auth()->id();
+
+           
 
             foreach ($fileMappings as $inputKey => $dbKey) {
                 if ($request->hasFile($inputKey)) {
                     $file = $request->file($inputKey);
-                    $fileName = time() . '-' . $file->getClientOriginalName();
-                    $path = $file->storeAs('uploads', $fileName, 'public');
+                    $fileName = $userId . '-' . time() . '-' . $file->getClientOriginalName();
+                    $path = $file->storeAs('uploads/' . $fileName, 'public');
                     $pdffiles[$dbKey] = $path;
                 }
             }
-
     
             ApplicationSubmission::create($pdffiles);
             Log::info('Inserting application submission data:', $pdffiles);
@@ -114,6 +117,7 @@ class ApplicationSubmissionController extends Controller
         // Pass the submissions to the view
         return view('admin_userAppMan', compact('submissions'));
     }
+
     public function showApplicationStatus(Request $request)
     {
         try {
@@ -157,4 +161,51 @@ class ApplicationSubmissionController extends Controller
     
         return response()->json(['success' => true, 'message' => 'Submission approved successfully.']);
     }
+
+    public function update(Request $request, $id) 
+    {
+        $request->validate([
+            'file' => 'required|mimes:pdf,jpg,jpeg,png,doc,docx|max:5048',
+            'document_type' => 'required|string',
+        ]);
+    
+        $application = ApplicationSubmission::findOrFail($id);
+        $fieldName = $this->getFieldName($request->document_type);
+    
+        if ($fieldName) {
+            // Delete the old file if it exists
+            if ($application->$fieldName) {
+                Storage::disk('public')->delete($application->$fieldName);
+            }
+    
+            // Get the authenticated user ID
+            $userId = auth()->id();
+    
+            // Create a new file name including the user ID
+            $file = $request->file('file');
+            $fileName = $userId . '-' . time() . '-' . $file->getClientOriginalName();
+    
+            // Store the new file in the 'uploads' directory
+            $filePath = $file->storeAs('uploads', $fileName, 'public');
+    
+            // Update the database record with the new file path
+            $application->$fieldName = $filePath;
+            $application->save();
+        }
+    
+        return response()->json(['success' => true, 'message' => 'Successfully Updated.']);
+    }
+    
+
+    private function getFieldName($documentType)
+    {
+        $map = [
+            'Certificate of Registration.pdf' => 'COR',
+            'Grades Form.pdf' => 'gradesForm',
+            'Indigency Certificate.pdf' => 'indigencyCertificate',
+        ];
+        return $map[$documentType] ?? null;
+    }
 }
+
+

@@ -15,6 +15,7 @@
                 <th>Uploaded Files</th>
                 <th>Date</th>
                 <th>Status</th>
+                <th>Remarks</th>
             </tr>
             @foreach ($applications as $application)
                 @php
@@ -34,6 +35,9 @@
                                 </td>
                                 <td rowspan="{{ count(array_filter($files)) }}" class="{{ strtolower($application->status) }}">
                                     {{ $application->status }}
+                                </td>
+                                <td rowspan="{{ count(array_filter($files)) }}" class="{{ strtolower($application->remarks) }}">
+                                    {{ $application->remarks }}
                                 </td>
                             @endif
                         </tr>

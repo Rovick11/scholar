@@ -22,7 +22,7 @@
         <li><a href="{{ route('user_appStatus') }}"><i class="fas fa-tasks"></i> Application Status Tracking</a></li>
         <li><a href="{{ route('user_docUpload') }}"><i class="fas fa-upload"></i> Document Upload & Management</a></li>
         <li><a href="{{ route('user_acceptForm') }}"><i class="fas fa-file-alt"></i> Acceptance Form</a></li>
-            <li><a href="notify.php"><i class="fas fa-redo"></i> Renewal & Reapplication </a></li>
+        <li><a href="{{ route('user_renewal') }}"><i class="fas fa-redo"></i> Renewal & Reapplication </a></li>
         </ul>
         <div class="bottom-links">
             <ul>
