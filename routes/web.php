@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('userdash');
+    return view('index');
 });
 
 Route::middleware(['auth'])->group(function () {
