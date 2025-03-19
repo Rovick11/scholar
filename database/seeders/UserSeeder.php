@@ -17,8 +17,29 @@ class UserSeeder extends Seeder
             'firstName' => 'Rovick',
             'lastName' => 'Macalindong',
             'email' => 'rovickdilagmacalindong@gmail.com',
+            'contactNo' => '12345678',
             'birthDate' => '1999-10-13',
             'role' => 'Super Admin',
+            'password' => 'password'
+        ]);
+
+        DB::table('users') -> insert([
+            'firstName' => 'dummy1',
+            'lastName' => 'dumm',
+            'email' => 'rovickmacalindong11@gmail.com',
+            'contactNo' => '12345678',
+            'birthDate' => '1999-10-13',
+            'role' => 'Admin',
+            'password' => 'password'
+        ]);
+
+        DB::table('users') -> insert([
+            'firstName' => 'dummy2',
+            'lastName' => 'dumm',
+            'email' => 'rovick@gmail.com',
+            'contactNo' => '12345678',
+            'birthDate' => '1999-10-13',
+            'role' => 'User',
             'password' => 'password'
         ]);
     }
