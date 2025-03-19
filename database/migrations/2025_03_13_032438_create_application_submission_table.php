@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('indigencyCertificate');
             $table->string('gradesForm');
             $table->string('status');
-            $table->string('remarks');
+            $table->string('remarks')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

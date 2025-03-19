@@ -20,6 +20,7 @@ return new class extends Migration
             $table->double('contactNo');
             $table->string('role');
             $table->string('password');
+            $table->string('contactNo');
             $table->rememberToken();
             $table->timestamps();
         });
