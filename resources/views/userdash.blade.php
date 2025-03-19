@@ -95,38 +95,38 @@
     <div class="popup-content">
         <span class="close" onclick="closePopup()">&times;</span>
         <h2>Personal Information</h2>
+        <form id="updateForm" action="{{ route('userprofile.update', ['id' => $user->id ?? 0]) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT') <!-- Use PUT for updating data -->
 
-        <div class="input-group">
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" value="Doe">
-        </div>
+            <div class="input-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last_name" value="{{ $user->lastName }}" required>
+            </div>
 
-        <div class="input-group">
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name" value="John">
-        </div>
+            <div class="input-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first_name" value="{{ $user->firstName }}" required>
+            </div>
 
-        <div class="input-group">
-            <label for="middle-name">Middle Name</label>
-            <input type="text" id="middle-name" value="Michael">
-        </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ $user->email }}" required>
+            </div>
 
-        <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" value="johndoe@example.com">
-        </div>
+            <div class="input-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" value="{{ $user->contactNo }}" required>
+            </div>
 
-        <div class="input-group">
-            <label for="phone">Phone Number</label>
-            <input type="text" id="phone" value="09123456789">
-        </div>
+            <div class="input-group">
+                <label for="birth-date">Birth Date</label>
+                <input type="date" id="birth-date" name="birth_date" value="{{ $user->birthDate }}" required>
+            </div>
 
-        <div class="input-group">
-            <label for="birth-date">Birth Date</label>
-            <input type="date" id="birth-date" value="2000-01-01">
-        </div>
+            <button type="submit">Update</button>
+        </form>
 
-        <button onclick="saveDetails()">Save</button>
     </div>
 </div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

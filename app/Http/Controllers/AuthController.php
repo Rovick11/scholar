@@ -131,4 +131,30 @@ class AuthController extends Controller
             }
 
     }
+
+    public function update(Request $request, $id) 
+    {
+        $user = User::findOrFail($id); // Find user or return 404
+    
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $id, // Ignore current user's email
+            'birth_date' => 'required|date',
+            'phone' => 'required|string|max:10',
+           
+        ]);
+    
+        // Update user fields
+        $user->update([
+            'firstName' => $request->first_name,
+            'lastName' => $request->last_name,
+            'email' => $request->email,
+            'birthDate' => $request->birth_date,         
+            'contactNo' => $request->phone,
+
+        ]);
+    
+        return response()->json(['success' => true, 'message' => 'Successfully Updated.']);
+    }
 }

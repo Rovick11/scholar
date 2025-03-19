@@ -44,3 +44,4 @@ Route::get('/admin_history', [PageController::class, 'showAdmin_History'])->name
 Route::get('/user_acceptForm', [PageController::class, 'showUser_AcceptForm'])->name('user_acceptForm');
 Route::get('/user_renewal', [PageController::class, 'showUser_Renewal'])->name('user_renewal');
 Route::put('/documents/update/{id}', [ApplicationSubmissionController::class, 'update'])->name('document.update');
+Route::put('/user/update/{id}', [AuthController::class, 'update'])->name('userprofile.update');

@@ -19,7 +19,7 @@
         </div>
         <div class="letter">
             <h2 style="text-align: center;">Scholarship Acceptance Letter</h2>
-            <p>Dear [Recipient's Name],</p>
+            <p>Dear {{ ucwords($user->firstName) . ' ' . ucwords($user->lastName) }},</p>
             <p style="text-align: justify;">We are pleased to inform you that your application for the government scholarship has been approved. This scholarship will be awarded on a first-semester basis, following the guidelines set by the government.</p>
             <p>Please keep this letter as official proof of your scholarship acceptance.</p>
         </div>
