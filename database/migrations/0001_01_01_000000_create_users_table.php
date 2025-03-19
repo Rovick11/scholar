@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('lastName');
             $table->string('email')->unique(); // Ensure this line is present
             $table->date('birthDate');
+            $table->double('contactNo');
             $table->string('role');
             $table->string('password');
             $table->rememberToken();
