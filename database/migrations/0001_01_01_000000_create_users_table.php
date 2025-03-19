@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('birthDate');
             $table->string('role');
             $table->string('password');
+            $table->string('contactNo');
             $table->rememberToken();
             $table->timestamps();
         });
