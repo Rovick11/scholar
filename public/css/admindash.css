@@ -68,3 +68,7 @@ body {
     color: gray;
     font-size: 14px;
 }
+a.card {
+    text-decoration: none;
+    color: inherit;
+}
