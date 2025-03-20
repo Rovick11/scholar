@@ -16,8 +16,8 @@
             <img src="{{ asset('images/logo1.png') }}" alt="Logo">
         </div>
         <ul>
-            <li><a href="{{ route('admin_addNewSem') }}"><i class="fas fa-calendar-plus"></i> Add New Semester</a></li>
             <li><a href="{{ route('admindash') }}"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="{{ route('admin_addNewSem') }}"><i class="fas fa-calendar-plus"></i> Add New Semester</a></li>
             <li><a href="{{ route('admin_scholarMan') }}"><i class="fas fa-file-alt"></i> Scholar Management</a></li>
             <li><a href="{{ route('admin_userAppMan') }}"><i class="fas fa-check-circle"></i> User and Application
                     Management</a></li>
