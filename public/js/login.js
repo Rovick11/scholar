@@ -212,7 +212,7 @@ $(document).ready(function () {
                                 form[0].reset();
                                 Swal.fire({
                                     icon: "success",
-                                    title: "File Updated Successfully",
+                                    title: "User Profile Updated Successfully",
                                     confirmButtonColor: "#3085d6",
                                     heightAuto: false
                                 }).then(() => {

@@ -4,7 +4,7 @@ use App\Http\Controllers\ApplicationSubmissionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\EmailOtpController;
 Route::get('/', function () {
     return view('index');
 });
@@ -44,4 +44,8 @@ Route::get('/admin_history', [PageController::class, 'showAdmin_History'])->name
 Route::get('/user_acceptForm', [PageController::class, 'showUser_AcceptForm'])->name('user_acceptForm');
 Route::get('/user_renewal', [PageController::class, 'showUser_Renewal'])->name('user_renewal');
 Route::put('/documents/update/{id}', [ApplicationSubmissionController::class, 'update'])->name('document.update');
-Route::put('/user/update/{id}', [AuthController::class, 'update'])->name('userprofile.update');
+
+
+Route::post('/send-otp', [EmailOtpController::class, 'sendOtp'])->name('send.otp');
+Route::post('/verify-otp', [EmailOtpController::class, 'verifyOtp'])->name('verify.otp');
+Route::put('/update-profile/{id}', [EmailOtpController::class, 'updateProfile'])->name('userprofile.update');

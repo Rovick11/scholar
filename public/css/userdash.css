@@ -234,6 +234,31 @@ font-weight: 600;
     flex-direction: column;
     text-align: left;
 }
+.input-group1 {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Reduce space between elements */
+    width: 100%; /* Ensures it takes the full width */
+}
+
+.input-group1 label {
+    white-space: nowrap; /* Prevents the label from wrapping */
+}
+
+.input-group1 input {
+    flex: 1; /* Let the input take up remaining space without growing too much */
+    min-width: 150px; /* Prevents shrinking too much */
+    padding: 8px;
+}
+
+.input-group1 button {
+    flex: 0; /* Prevents it from stretching */
+    min-width: auto; /* Keeps button size natural */
+ 
+}
+
+
+
 
 .popup label {
     font-size: 14px;
@@ -263,7 +288,7 @@ font-weight: 600;
     cursor: pointer;
     margin-top: 10px;
     width: 110px;
-    margin-left: 505px;
+ 
 }
 
 .popup button:hover {

@@ -124,6 +124,32 @@
                 <input type="date" id="birth-date" name="birth_date" value="{{ $user->birthDate }}" required>
             </div>
 
+            
+          
+
+            <!-- OTP Input -->
+            <div class="input-group1">
+                <label for="otp" class="form-label">Enter OTP</label>
+                <input type="text" id="otp" name="otp" class="form-control" maxlength="6" disabled>
+                <span id="otpStatus" class="text-danger"></span> <!-- Display OTP validation -->
+                <button type="button" class="btn btn-secondary" id="sendOtp">Send otp</button>
+                
+            </div>
+
+          
+
+            <!-- New Password Fields -->
+            <div class="input-group">
+                <label for="password" class="form-label">New Password</label>
+                <input type="password" id="password" name="password" class="form-control" disabled>
+            </div>
+
+            <div class="input-group">
+                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" disabled>
+            </div>
+
+
             <button type="submit">Update</button>
         </form>
 
@@ -134,6 +160,11 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script>
     var logoutUrl = "{{ route('logout') }}";
+    var sendURL = "{{ route('send.otp') }}";
+    var verifyURL = "{{ route('verify.otp') }}";
+</script>
+<script>
+   
 </script>
 <script src="{{ asset('js/login.js') }}"></script>
 <script src="{{ asset('js/userdash.js') }}"></script>
