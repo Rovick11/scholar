@@ -54,12 +54,12 @@
                             <input type="text" id="email" name="email" placeholder="Email" required>
                             @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                            
-                            <select id="barangay" name="barangay" placeholder="Barangay" required>
+
+                            <select id="barangay" name="barangay" required>
                                 <option value="">Select Barangay</option>
                                 <option value="Aga">Aga</option>
                                 <option value="Balaytigui">Balaytigui</option>
                                 <option value="Banilad">Banilad</option>
-                                <option value="Balaytigui">Balaytigui</option>
                                 <option value="Barangay 1">Barangay 1</option>
                                 <option value="Barangay 2">Barangay 2</option>
                                 <option value="Barangay 3">Barangay 3</option>
@@ -101,6 +101,7 @@
                                 <option value="Wawa">Wawa</option>
                             </select>
 
+
                             <div class="input-group" style="display: flex; align-items: center; gap: 13px;">
                             <label for="birthdate">Birthdate:</label>
                             <input type="date" id="birthdate" name="birthdate" required style="width: 160px;">
@@ -111,7 +112,7 @@
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
-                        </div>
+                            </div>  
 
                             <span class="phone-prefix">+63</span>
                             <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="9123456789"

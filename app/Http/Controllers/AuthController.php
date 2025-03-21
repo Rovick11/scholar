@@ -22,6 +22,8 @@ class AuthController extends Controller
                 'birthdate' => 'required|date',
                 'role' => 'required|in:user,pending',
                 'contact' => 'required|string|max:10',
+                'barangay' => 'required',
+                'gender' => 'required',
                 'password' => ['required', 'confirmed', Rules\Password::defaults()]
             ]);
 
@@ -35,6 +37,8 @@ class AuthController extends Controller
                 'role' => $request->role,
                 'contactNo' => $request->contact,
                 'password' => Hash::make($request->password),
+                'barangay' => $request->barangay,
+                'gender' => $request->gender,
             ]);
 
             Log::info('User  registered successfully', ['user_id' => $user->id]);
@@ -142,6 +146,8 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users,email,' . $id, // Ignore current user's email
             'birth_date' => 'required|date',
             'phone' => 'required|string|max:10',
+            'barangay' => 'required',
+            'gender' => 'required',
            
         ]);
     
@@ -152,6 +158,8 @@ class AuthController extends Controller
             'email' => $request->email,
             'birthDate' => $request->birth_date,         
             'contactNo' => $request->phone,
+            'barangay' => $request->barangay,
+            'gender' => $request->gender,
 
         ]);
     

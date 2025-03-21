@@ -27,6 +27,15 @@
             maxlength="10" required class="phone-input"  value = "{{$user->contactNo}}"readonly>
             </div>
 
+            <label for="barangay">Barangay</label>
+            <div class="form-group">
+                <input value ="{{ $user->barangay }}"readonly required>
+            </div>
+            <label for="gender">Gender</label>
+            <div class="form-group">
+                <input value ="{{ $user->gender }}"readonly required>
+            </div>
+
             <label for="file">Certificate of Registration</label>
             <div class="form-group">
                 <input type="file" id="cor" name="cor" accept=".pdf,.doc,.docx,.jpg,.png" required>

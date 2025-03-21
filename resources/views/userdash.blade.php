@@ -123,6 +123,62 @@
                 <label for="birth-date">Birth Date</label>
                 <input type="date" id="birth-date" name="birth_date" value="{{ $user->birthDate }}" required>
             </div>
+            <div class="input-group">
+            <select id="barangay" name="barangay" required>
+                                <option value="{{ $user->barangay }}">{{ $user->barangay }}</option>
+                                <option value="Aga">Aga</option>
+                                <option value="Balaytigui">Balaytigui</option>
+                                <option value="Banilad">Banilad</option>
+                                <option value="Barangay 1">Barangay 1</option>
+                                <option value="Barangay 2">Barangay 2</option>
+                                <option value="Barangay 3">Barangay 3</option>
+                                <option value="Barangay 4">Barangay 4</option>
+                                <option value="Barangay 5">Barangay 5</option>
+                                <option value="Barangay 6">Barangay 6</option>
+                                <option value="Barangay 7">Barangay 7</option>
+                                <option value="Barangay 8">Barangay 8</option>
+                                <option value="Barangay 9">Barangay 9</option>
+                                <option value="Barangay 10">Barangay 10</option>
+                                <option value="Barangay 11">Barangay 11</option>
+                                <option value="Barangay 12">Barangay 12</option>
+                                <option value="Bilaran">Bilaran</option>
+                                <option value="Bucana">Bucana</option>
+                                <option value="Bulihan">Bulihan</option>
+                                <option value="Bunducan">Bunducan</option>
+                                <option value="Butucan">Butucan</option>
+                                <option value="Calayo">Calayo</option>
+                                <option value="Catandaan">Catandaan</option>
+                                <option value="Kaylaway">Kaylaway</option>
+                                <option value="Kayrilaw">Kayrilaw</option>
+                                <option value="Cogunan">Cogunan</option>
+                                <option value="Dayap">Dayap</option>
+                                <option value="Latag">Latag</option>
+                                <option value="Looc">Looc</option>
+                                <option value="Lumbangan">Lumbangan</option>
+                                <option value="Malapad na Bato">Malapad na Bato</option>
+                                <option value="Mataas na Pulo">Mataas na Pulo</option>
+                                <option value="Maugat">Maugat</option>
+                                <option value="Munting Indan">Munting Indan</option>
+                                <option value="Natipuan">Natipuan</option>
+                                <option value="Pantalan">Pantalan</option>
+                                <option value="Papaya">Papaya</option>
+                                <option value="Putat">Putat</option>
+                                <option value="Reparo">Reparo</option>
+                                <option value="Talangan">Talangan</option>
+                                <option value="Tumalim">Tumalim</option>
+                                <option value="Utod">Utod</option>
+                                <option value="Wawa">Wawa</option>
+                            </select>
+            </div>
+            <div class="input-group">
+                            <label for="gender">Gender:</label>
+                            <select id="gender" name="gender" style="width: 110px;">
+                                <option value="{{ $user->gender}}">{{ $user->gender }}</option>
+
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+            </div>
 
             
           

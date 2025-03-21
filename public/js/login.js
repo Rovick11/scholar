@@ -249,13 +249,7 @@ $(document).ready(function () {
             });
         });
     });
-
-    $(document).ready(function(){
-        $("#barangay").on("change", function(){
-            alert("Selected Barangay: " + $(this).val());
-        });
-    });
-
+ 
     $('#nextStep').click(function(){
         $('#step1').hide();
         $('#step2').show();
