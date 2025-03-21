@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('firstName');
             $table->string('lastName');
+            $table->string('sex');
             $table->string('email')->unique(); // Ensure this line is present
             $table->date('birthDate');
             $table->double('contactNo');
+            $table->string('barangay');
             $table->string('role');
             $table->string('password');
             $table->string('contactNo');

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\ApplicationSubmission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -206,6 +206,29 @@ class ApplicationSubmissionController extends Controller
         ];
         return $map[$documentType] ?? null;
     }
+
+    public function showReports(Request $request)
+        {
+            $scholarReports = DB::table('application_submissions')
+                ->join('users', 'application_submissions.user_id', '=', 'users.id')
+                ->select(
+                    'users.firstName',
+                    'users.lastName',
+                    'users.gender',
+                    'users.birthDate',
+                    'application_submissions.status'
+                )
+                ->get();
+
+            // Count approved applications
+            $approvedCount = $scholarReports->where('status', 'approved')->count();
+
+            // Compute fund usage
+            $fundUsage = $approvedCount * 5000;
+
+            // Pass the data to the view
+            return view('admin_reportAna', compact('scholarReports', 'fundUsage'));
+        }
 }
 
 
