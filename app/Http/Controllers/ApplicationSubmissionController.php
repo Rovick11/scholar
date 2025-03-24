@@ -80,7 +80,9 @@ class ApplicationSubmissionController extends Controller
                 if ($request->hasFile($inputKey)) {
                     $file = $request->file($inputKey);
                     $fileName = $userId . '-' . time() . '-' . $file->getClientOriginalName();
-                    $path = $file->storeAs('uploads/' . $fileName, 'public');
+                    $path = $file->storeAs('uploads', $fileName, 'public');
+
+
                     $pdffiles[$dbKey] = $path;
                 }
             }
