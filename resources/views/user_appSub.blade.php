@@ -31,9 +31,9 @@
             <div class="form-group">
                 <input value ="{{ $user->barangay }}"readonly required>
             </div>
-            <label for="gender">Gender</label>
+            <label for="sex">sex</label>
             <div class="form-group">
-                <input value ="{{ $user->gender }}"readonly required>
+                <input value ="{{ $user->sex }}"readonly required>
             </div>
 
             <label for="file">Certificate of Registration</label>

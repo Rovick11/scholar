@@ -214,7 +214,7 @@ class ApplicationSubmissionController extends Controller
                 ->select(
                     'users.firstName',
                     'users.lastName',
-                    'users.gender',
+                    'users.sex',
                     'users.birthDate',
                     'application_submissions.status'
                 )

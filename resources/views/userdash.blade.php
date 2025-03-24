@@ -171,9 +171,9 @@
                             </select>
             </div>
             <div class="input-group">
-                            <label for="gender">Gender:</label>
-                            <select id="gender" name="gender" style="width: 110px;">
-                                <option value="{{ $user->gender}}">{{ $user->gender }}</option>
+                            <label for="sex">sex:</label>
+                            <select id="sex" name="sex" style="width: 110px;">
+                                <option value="{{ $user->sex}}">{{ $user->sex }}</option>
 
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
