@@ -213,7 +213,7 @@ font-weight: 600;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     border-radius: 10px;
-    width: 600px;
+    width: 800px;
     text-align: center;
 }
 
@@ -234,31 +234,87 @@ font-weight: 600;
     flex-direction: column;
     text-align: left;
 }
+
+.input-group label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-group select:hover {
+    border-color: #007bff;
+}
+
+.input-group select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Style specifically for the 'sex' dropdown */
+#sex {
+    width: 120px !important;
+}
+
 .input-group1 {
     display: flex;
     align-items: center;
-    gap: 5px; /* Reduce space between elements */
-    width: 100%; /* Ensures it takes the full width */
+    gap: 8px; /* Slightly increased for better spacing */
+    width: 100%; /* Ensures full width */
+    max-width: 400px; /* Prevents it from becoming too wide */
+    margin: auto; /* Centers the input group */
 }
 
 .input-group1 label {
-    white-space: nowrap; /* Prevents the label from wrapping */
+    white-space: nowrap; /* Keeps the label in a single line */
+    font-weight: bold;
+    color: #333;
 }
 
 .input-group1 input {
-    flex: 1; /* Let the input take up remaining space without growing too much */
-    min-width: 150px; /* Prevents shrinking too much */
+    flex: 1; /* Allows the input to take up available space */
+    min-width: 180px; /* Prevents shrinking too much */
+    max-width: 220px; /* Limits width for consistency */
     padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center; /* Centers OTP digits */
+    background-color: #f8f8f8;
+}
+
+.input-group1 input:disabled {
+    background-color: #e9ecef; /* Light gray when disabled */
+    cursor: not-allowed;
 }
 
 .input-group1 button {
-    flex: 0; /* Prevents it from stretching */
-    min-width: auto; /* Keeps button size natural */
- 
+    flex-shrink: 0; /* Prevents the button from resizing */
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-
-
+.input-group1 button:hover {
+    background-color: #0056b3;
+}
 
 .popup label {
     font-size: 14px;
