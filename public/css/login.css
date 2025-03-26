@@ -208,6 +208,60 @@ a {
         background: #fff;
         cursor: pointer;
     }
+
+    .input-group1 {
+        display: flex;
+        align-items: center;
+        gap: 8px; /* Slightly increased for better spacing */
+        width: 100%; /* Ensures full width */
+        max-width: 400px; /* Prevents it from becoming too wide */
+        margin: auto; /* Centers the input group */
+    }
+    
+    .input-group1 label {
+        white-space: nowrap; /* Keeps the label in a single line */
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .input-group1 input {
+        flex: 1; /* Allows the input to take up available space */
+        min-width: 180px; /* Prevents shrinking too much */
+        max-width: 220px; /* Limits width for consistency */
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        text-align: center; /* Centers OTP digits */
+        background-color: #f8f8f8;
+    }
+    
+    .input-group1 input:disabled {
+        background-color: #e9ecef; /* Light gray when disabled */
+        cursor: not-allowed;
+    }
+    
+    .input-group1 button {
+        flex-shrink: 0; /* Prevents the button from resizing */
+        padding: 8px 12px;
+        font-size: 14px;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .input-group1 button:hover {
+        background-color: #0056b3;
+    }
+    .disabled-btn {
+        background-color: grey !important;
+        color: white !important;
+        cursor: not-allowed !important;
+        opacity: 0.6;
+    }
     
     
 

@@ -125,6 +125,26 @@ h2, h3 {
     width: 100%;
 }
 
+.submit-btn {
+    background-color: #2A5DB0;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+   
+    width: 100%;
+}
+
 .btn:hover {
     background-color: #1E4A8C;
+}
+
+.disabled-btn {
+    background-color: grey !important;
+    color: white !important;
+    cursor: not-allowed !important;
+    opacity: 0.6;
 }

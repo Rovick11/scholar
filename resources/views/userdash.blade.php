@@ -124,6 +124,7 @@
                 <input type="date" id="birth-date" name="birth_date" value="{{ $user->birthDate }}" required>
             </div>
             <div class="input-group">
+            <label for="barangay">Barangay</label>
             <select id="barangay" name="barangay" required>
                                 <option value="{{ $user->barangay }}">{{ $user->barangay }}</option>
                                 <option value="Aga">Aga</option>
@@ -171,7 +172,8 @@
                             </select>
             </div>
             <div class="input-group">
-                            <label for="sex">sex:</label>
+                            <label for="sex">Sex
+                            </label>
                             <select id="sex" name="sex" style="width: 110px;">
                                 <option value="{{ $user->sex}}">{{ $user->sex }}</option>
 

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>Application Submission</title>
     <link rel="stylesheet" href="{{ asset('css/user_appSub.css') }}">
-
+    
 </head>
 <body>
 @include('userdash')
         <div class="content">
        
     <form id = "appForm" action="{{route('applicationForm')}}" method="POST" enctype="multipart/form-data">
-    @csrf   
+            @csrf   
             <div id="step1">
                 <h3>Step 1: Personal Information</h3>
                 
@@ -41,7 +41,7 @@
                 <div class="form-group row">
                     <div class="col">
                         <label for="bdate">Birth Date</label>
-                        <input type="text" id="birthdate" name="birthdate" placeholder="MM/DD/YYYY" required readonly>
+                        <input type="text" id="birthdate" name="birthdate" placeholder="MM/DD/YYYY" value ="{{ $user->birthDate }}" required readonly>
                     </div>
 
                     <div class="col">
@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="col btn-container">
-                        <button type="button" id="nextStep" class="btn">Next</button>
+                        <button type="button" id="nextStepSub" class="btn">Next</button>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
             <div id="step2" style="display: none;">
                 <!-- Back button at the top -->
             <div class="back-container">
-                <button type="button" id="prevStep" class="back-btn">&larr; </button>
+                <button type="button" id="prevStepSub" class="back-btn">&larr; </button>
             </div>
                 <h3>Step 2: Document Submission</h3>
 
@@ -77,13 +77,16 @@
                     <input type="file" id="indigency" name="indigency" accept=".pdf,.doc,.docx,.jpg,.png" required>
                 </div>
 
-                @php
-                $isPending = $applicationStatus === 'pending';
-            @endphp
+               
 
                 <!-- Submit button at the bottom right -->
                 <div class="btn-container">
-                    <input type="submit" value="Submit Application" class="submit-btn {{ $isPending ? 'disabled-btn' : '' }}" id="appButton" {{ $isPending ? 'disabled' : '' }}>
+                @if(!isset($application) || empty($applicationStatus) || in_array($applicationStatus, ['Rejected', 'Resubmission Required']))
+                    <input type="button" value="Submit Application" class="submit-btn" id="appButton">
+                @else
+                    <input type="button" value="Submit Application" class="submit-btn disabled-btn" id="appButton" disabled>
+                @endif
+
                 </div>
             </div>
         </form>

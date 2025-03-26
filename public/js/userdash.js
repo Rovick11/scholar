@@ -1,6 +1,7 @@
 $(document).ready(function () {
     const sendOtpButton = $("#sendOtp");
     const sendOtpinput = $("#otp");
+    const next = $("#nextStep1");
     let cooldownTime = 30;
 
 
@@ -59,6 +60,7 @@ $(document).ready(function () {
                         $("#otpStatus").text("✅ OTP Verified").removeClass("text-danger").addClass("text-success");
                         $("#password, #password_confirmation").prop("disabled", false);
                         $("#updateBtn").prop("disabled", false);
+                        nextBtn.disabled = false;
                     } else {
                         $("#otpStatus").text("❌ Invalid OTP").removeClass("text-success").addClass("text-danger");
                         $("#password, #password_confirmation").prop("disabled", true);

@@ -16,7 +16,7 @@ class EmailOtpController extends Controller
     {
         Log::info('OTP request received', ['email' => $request->email]);
 
-        $request->validate(['email' => 'required|email|exists:users,email']);
+        $request->validate(['email' => 'required|email']);
 
         $otp = rand(100000, 999999); // Generate 6-digit OTP
         Session::put('otp', $otp);

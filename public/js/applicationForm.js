@@ -73,11 +73,11 @@
 
 });
 
-$('#nextStep').click(function(){
+$('#nextStepSub').click(function(){
     $('#step1').hide();
     $('#step2').show();
 });
-$('#prevStep').click(function(){
+$('#prevStepSub').click(function(){
     $('#step1').show();
     $('#step2').hide();
 });

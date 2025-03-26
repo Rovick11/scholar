@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <title>Login Form</title>
 </head>
@@ -51,8 +52,6 @@
                             <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
                             @error('lastName') <span class="text-danger">{{ $message }}</span> @enderror
 
-                            <input type="text" id="email" name="email" placeholder="Email" required>
-                            @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                            
 
                             <select id="barangay" name="barangay" required>
@@ -120,6 +119,19 @@
                             <input type="button" value ="Next" id="nextStep" ></input>
                     </div>
                     <div id="step2" style="display: none;">
+                            <h3>Step 2: Email Verification</h3>
+                            <input type="text" id="email" name="email" placeholder="Email" required>
+                            <div class="input-group1">
+                                <label for="otp" class="form-label">Enter OTP</label>
+                                <input type="text" id="otp" name="otp" class="form-control" maxlength="6" disabled>
+                                <span id="otpStatus" class="text-danger"></span> <!-- Display OTP validation -->
+                                <button type="button" class="btn btn-secondary" id="sendOtp">Send otp</button>
+                                
+                            </div>
+                            <button type="button" id="prevStep" class="btn btn-secondary">Back</button>
+                            <input type="button" value ="Next" id="nextStep1" class = "disabled-btn"></input>
+                    </div>
+                    <div id="step3" style="display: none;">
                             <h3>Step 2: Account Security</h3>
                             <input type="password" id="password" name="password" placeholder="Password" required>
                             @error('password') <span class="text-danger">{{ $message }}</span> @enderror
@@ -131,7 +143,7 @@
                                 <option value="pending">Admin</option>
                             </select>
                             @error('role') <span class="text-danger">{{ $message }}</span> @enderror
-                            <button type="button" id="prevStep" class="btn btn-secondary">Back</button>
+                            <button type="button" id="prevStep1" class="btn btn-secondary">Back</button>
                             <input type="button" value="Register" id="registerButton">
                     </div>
                 </form>
@@ -142,6 +154,11 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+   
+        var sendURL = "{{ route('send.otp') }}";
+        var verifyURL = "{{ route('verify.otp') }}";
+    </script>
 
   
 

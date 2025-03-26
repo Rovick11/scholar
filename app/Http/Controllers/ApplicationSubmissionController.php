@@ -26,7 +26,7 @@ class ApplicationSubmissionController extends Controller
         Log::info('Authenticated user:', ['id' => $user->id, 'name' => $user->firstName . ' ' . $user->lastName]);
 
     
-        return view('user_appSub', compact('applicationStatus'));
+        return view('user_appSub', compact('applicationStatus', 'application'));
     }
 
     public function getUserDoc(Request $request){
