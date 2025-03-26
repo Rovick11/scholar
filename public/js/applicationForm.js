@@ -72,12 +72,3 @@
     });
 
 });
-
-$('#nextStep').click(function(){
-    $('#step1').hide();
-    $('#step2').show();
-});
-$('#prevStep').click(function(){
-    $('#step1').show();
-    $('#step2').hide();
-})   
