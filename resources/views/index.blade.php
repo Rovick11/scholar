@@ -106,11 +106,11 @@
                             <label for="birthdate">Birthdate:</label>
                             <input type="date" id="birthdate" name="birthdate" required style="width: 160px;">
                             @error('birthdate') <span class="text-danger">{{ $message }}</span> @enderror
-                            <label for="gender">Gender:</label>
-                            <select id="gender" name="gender" style="width: 110px;">
+                            <label for="sex">sex:</label>
+                            <select id="sex" name="sex" style="width: 110px;">
                                 <option value="" disabled selected>Select</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
                             </div>  
 

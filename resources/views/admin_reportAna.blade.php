@@ -42,7 +42,7 @@
                     <tr data-status="{{ strtolower($report->status) }}">
                         <td>{{ $report->firstName }} {{ $report->lastName }}</td>
                         <td>{{ ucfirst($report->status) }}</td>
-                        <td>{{ $report->gender }}, {{ \Carbon\Carbon::parse($report->birthDate)->age }}</td>
+                        <td>{{ $report->sex }}, {{ \Carbon\Carbon::parse($report->birthDate)->age }}, {{ $report->barangay }}</td>
                     </tr>
                 @endforeach
             </tbody>
