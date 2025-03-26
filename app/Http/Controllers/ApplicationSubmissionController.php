@@ -218,6 +218,7 @@ class ApplicationSubmissionController extends Controller
                     'users.lastName',
                     'users.sex',
                     'users.birthDate',
+                    'users.barangay',
                     'application_submissions.status'
                 )
                 ->get();
