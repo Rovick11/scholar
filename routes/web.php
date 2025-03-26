@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailOtpController;
+use App\Http\Controllers\NotificationController;
 Route::get('/', function () {
     return view('index');
 });
@@ -23,6 +24,8 @@ Route::post('/user_appSub', [ApplicationSubmissionController::class, 'applicatio
 Route::get('/admin_userAppMan', [ApplicationSubmissionController::class, 'showSubmissions'])->name('admin_userAppMan');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/submissions/{id}/approve', [ApplicationSubmissionController::class, 'approveSubmission'])->name('submissions.approve');
+Route::post('/submissions/{id}/reject', [ApplicationSubmissionController::class, 'reject'])->name('submission.reject');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/userdash', function () {
@@ -34,6 +37,14 @@ Route::middleware(['auth'])->group(function () {
     })->name('admindash');
 
 });
+
+
+
+
+
+Route::get('/notifications/fetch', [NotificationController::class, 'fetchNotifications'])->name('notifications.fetch');
+
+
 
 Route::get('/admindash', [PageController::class, 'showadmindash'])->name('admindash');
 Route::get('/scholarman', [PageController::class, 'showAdmin_ScholarMan'])->name('admin_scholarMan');

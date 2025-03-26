@@ -104,6 +104,22 @@ class ApplicationSubmissionController extends Controller
             ], 400);
         }
     }
+    public function reject(Request $request, $id)
+{
+    $submission = ApplicationSubmission::find($id);
+
+    if (!$submission) {
+        return response()->json(['success' => false, 'message' => 'Submission not found.']);
+    }
+
+    // Ensure 'status' and 'remarks' are correctly updated
+    $submission->status = 'rejected';
+    $submission->remarks = $request->input('comment'); // Ensure this matches the AJAX request
+    $submission->save();
+
+    return response()->json(['success' => true]);
+}
+
     public function showSubmissions(Request $request)
     {
         // Fetch all application submissions with status 'pending'
