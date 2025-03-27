@@ -248,6 +248,26 @@ class ApplicationSubmissionController extends Controller
             // Pass the data to the view
             return view('admin_reportAna', compact('scholarReports', 'fundUsage'));
         }
+
+        
+        public function showApproved(Request $request)
+        {
+            $scholarApproved = DB::table('application_submissions')
+                ->join('users', 'application_submissions.user_id', '=', 'users.id')
+                ->select(
+                    'users.firstName',
+                    'users.lastName',
+                    'users.email',
+                    'users.contactNo',
+                    'application_submissions.status'
+                )
+                ->where('application_submissions.status', 'approved') // Filter for approved applications
+                ->get();
+
+                return view('admin_scholarAward', ['showApproved' => $scholarApproved]);
+        }
+
+
 }
 
 

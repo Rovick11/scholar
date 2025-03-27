@@ -61,7 +61,7 @@ class PageController extends Controller
         return view('admin_scholarAward');
     }
 
-    public function showAdmin_Award()
+    public function showAdmin_SAward()
     {
         return view('admin_award');
     }

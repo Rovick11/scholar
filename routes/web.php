@@ -49,7 +49,7 @@ Route::get('/notifications/fetch', [NotificationController::class, 'fetchNotific
 Route::get('/admindash', [PageController::class, 'showadmindash'])->name('admindash');
 Route::get('/scholarman', [PageController::class, 'showAdmin_ScholarMan'])->name('admin_scholarMan');
 Route::get('/admin_scholarAward', [PageController::class, 'showAdmin_ScholarAward'])->name('admin_scholarAward');
-Route::get('/admin_award', [PageController::class, 'showAdmin_Award'])->name('admin_award');
+Route::get('/admin_award', [PageController::class, 'showAdmin_SAward'])->name('admin_award');
 Route::get('/admin_reportAna', [ApplicationSubmissionController::class, 'showReports'])->name('admin_reportAna');
 Route::get('/admin_addNewSem', [PageController::class, 'showAdmin_AddNewSem'])->name('admin_addNewSem');
 Route::get('/admin_history', [PageController::class, 'showAdmin_History'])->name('admin_history');
@@ -61,4 +61,8 @@ Route::put('/documents/update/{id}', [ApplicationSubmissionController::class, 'u
 Route::post('/send-otp', [EmailOtpController::class, 'sendOtp'])->name('send.otp');
 Route::post('/verify-otp', [EmailOtpController::class, 'verifyOtp'])->name('verify.otp');
 Route::put('/update-profile/{id}', [EmailOtpController::class, 'updateProfile'])->name('userprofile.update');
+
+
+Route::get('/admin_scholarAward', [ApplicationSubmissionController::class, 'showApproved'])->name('admin_scholarAward');
+
 
