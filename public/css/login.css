@@ -106,7 +106,7 @@ a {
     color: #242424;
     text-align: left;
     padding: 20px;
-    overflow-y: auto;
+    overflow-y: none;
     max-height: 600px;
 }
 
@@ -212,50 +212,10 @@ a {
     .input-group1 {
         display: flex;
         align-items: center;
-        gap: 8px; /* Slightly increased for better spacing */
-        width: 100%; /* Ensures full width */
-        max-width: 400px; /* Prevents it from becoming too wide */
-        margin: auto; /* Centers the input group */
+        gap: 10px; /* Space between input and button */
+        width: 100%;
     }
     
-    .input-group1 label {
-        white-space: nowrap; /* Keeps the label in a single line */
-        font-weight: bold;
-        color: #333;
-    }
-    
-    .input-group1 input {
-        flex: 1; /* Allows the input to take up available space */
-        min-width: 180px; /* Prevents shrinking too much */
-        max-width: 220px; /* Limits width for consistency */
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        text-align: center; /* Centers OTP digits */
-        background-color: #f8f8f8;
-    }
-    
-    .input-group1 input:disabled {
-        background-color: #e9ecef; /* Light gray when disabled */
-        cursor: not-allowed;
-    }
-    
-    .input-group1 button {
-        flex-shrink: 0; /* Prevents the button from resizing */
-        padding: 8px 12px;
-        font-size: 14px;
-        border-radius: 5px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    
-    .input-group1 button:hover {
-        background-color: #0056b3;
-    }
     .disabled-btn {
         background-color: grey !important;
         color: white !important;
@@ -263,6 +223,74 @@ a {
         opacity: 0.6;
     }
     
+    .input-group {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* Adjust spacing between elements */
+        width: 100%;
+    }
+    .floating-label {
+        flex: 1; /* Ensures both fields take equal space */
+        position: relative;
+        min-width: 200px; 
+    }
+    
+    .floating-label input,
+    .floating-label select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        background: transparent;
+        height: 50px;
+    }
+    
+    .floating-label label {
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: #999;
+        transition: all 0.3s ease-in-out;
+        pointer-events: none;
+        background: white;
+        padding: 0 5px;
+    }
+    
+    .floating-label input:focus + label,
+    .floating-label input:not(:placeholder-shown) + label,
+    .floating-label select:focus + label,
+    .floating-label select:not([value=""]) + label {
+        top: 5px;
+        font-size: 12px;
+        color: #333;
+    }
+    
+    #sendOtp {
+        background-color: #007bff; /* Blue color */
+        border: none;
+        color: white;
+        padding: 10px 16px;
+        font-size: 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: Arial, sans-serif;
+    }
+    
+    /* Hover effect */
+    #sendOtp:hover {
+        background-color: #0056b3; /* Darker blue */
+        transform: scale(1.05);
+    }
+    
+    /* Disabled button */
+    #sendOtp:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
     
 
    
