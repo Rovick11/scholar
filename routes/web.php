@@ -62,3 +62,7 @@ Route::post('/send-otp', [EmailOtpController::class, 'sendOtp'])->name('send.otp
 Route::post('/verify-otp', [EmailOtpController::class, 'verifyOtp'])->name('verify.otp');
 Route::put('/update-profile/{id}', [EmailOtpController::class, 'updateProfile'])->name('userprofile.update');
 
+
+Route::get('/admin_scholarAward', [ApplicationSubmissionController::class, 'showApproved'])->name('admin_scholarAward');
+
+

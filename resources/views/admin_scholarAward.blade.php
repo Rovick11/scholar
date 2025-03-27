@@ -29,31 +29,24 @@
         <table>
             <thead>
                 <tr>
-                    <th>User ID</th>
                     <th>Name</th>
                     <th>Email Address</th>
                     <th>Contact</th>
                     <th>Action</th>
-                    <th>Date Claimed</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>John Doe</td>
-                    <td>johndoe@example.com</td>
-                    <td>123-456-7890</td>
-                    <td><button onclick="claimScholarship(this)">Claim</button></td>
-                    <td class="claim-date"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Jane Smith</td>
-                    <td>janesmith@example.com</td>
-                    <td>098-765-4321</td>
-                    <td><button onclick="claimScholarship(this)">Claim</button></td>
-                    <td class="claim-date"></td>
-                </tr>
+                @foreach($showApproved as $approved) <!-- Change here -->
+                    <tr data-status="{{ strtolower($approved->status) }}">
+                        <td>{{ $approved->firstName }} {{ $approved->lastName }}</td>
+                        <td>{{ ucfirst($approved->email) }}</td>
+                        <td>{{ ucfirst($approved->contactNo) }}</td>
+                        <td>
+                            <button onclick="claimScholarship(this)">Claim</button>
+                            <span class="claim-date"></span>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
