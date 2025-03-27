@@ -22,9 +22,8 @@ return new class extends Migration
             $table->string('barangay');
             $table->string('role');
             $table->string('password');
-          
-           
-           
+            $table->string('middleName');
+            $table->string('university');       
             $table->rememberToken();
             $table->timestamps();
         });
