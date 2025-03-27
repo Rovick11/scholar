@@ -65,4 +65,5 @@ Route::put('/update-profile/{id}', [EmailOtpController::class, 'updateProfile'])
 
 Route::get('/admin_scholarAward', [ApplicationSubmissionController::class, 'showApproved'])->name('admin_scholarAward');
 
+Route::get('/admindash', [ApplicationSubmissionController::class, 'showDashboard'])->name('admindash');
 
