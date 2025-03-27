@@ -31,8 +31,8 @@
                         <button class="approve" data-id="{{ $submission->id }}">Approve</button>
                         <button class="reject" data-id="{{ $submission->id }}">Reject</button>
                         <textarea placeholder="Add a comment..." style="display:none;"></textarea>
-                        <button class="save-comment" data-id="{{ $submission->id }}" style="display:none;">Save Comment</button>
-                        <button class="edit" data-id="{{ $submission->id }}" style="display:none;">Edit</button>
+                        <!--<button class="save-comment" data-id="{{ $submission->id }}" style="display:none;">Save Comment</button>
+                        <button class="edit" data-id="{{ $submission->id }}" style="display:none;">Edit</button>-->
                     </td>
                 </tr>
             @endforeach
@@ -44,13 +44,13 @@
         button.addEventListener('click', function () {
             let row = this.closest('tr');
             let commentBox = row.querySelector('textarea');
-            let saveBtn = row.querySelector('.save-comment');
-            let editBtn = row.querySelector('.edit');
+            //let saveBtn = row.querySelector('.save-comment');
+            //let editBtn = row.querySelector('.edit');
 
             // Show comment box, save button, and edit button
             commentBox.style.display = 'block';
-            saveBtn.style.display = 'block';
-            editBtn.style.display = 'block';
+            //saveBtn.style.display = 'block';
+            //editBtn.style.display = 'block';
         });
     });
 
@@ -64,8 +64,8 @@
             let row = this.closest('tr');
             let submissionId = this.getAttribute('data-id'); // Get the submission ID
             let commentBox = row.querySelector('textarea');
-            let saveBtn = row.querySelector('.save-comment');
-            let editBtn = row.querySelector('.edit');
+            //let saveBtn = row.querySelector('.save-comment');
+            //let editBtn = row.querySelector('.edit');
 
             // Send AJAX request to update the status
             fetch(`/submissions/${submissionId}/approve`, {
@@ -84,8 +84,8 @@
 
                     // Hide comment-related elements
                     commentBox.style.display = 'none';
-                    saveBtn.style.display = 'none';
-                    editBtn.style.display = 'none';
+                    //saveBtn.style.display = 'none';
+                    //editBtn.style.display = 'none';
 
                     // Disable all action buttons after approval
                     button.disabled = true;
@@ -100,12 +100,54 @@
             });
         });
     });
+    document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('reject')) {
+        console.log('Reject button clicked!');
+        
+        let row = event.target.closest('tr');
+        let submissionId = event.target.getAttribute('data-id');
+        let commentBox = row.querySelector('textarea');
+
+        if (commentBox.value.trim() === '') {
+            alert('Please enter a comment before rejecting.');
+            return;
+        }
+
+        fetch(`/submissions/${submissionId}/reject`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+                comment: commentBox.value.trim()
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Submission rejected successfully.');
+                row.querySelector('.approve').disabled = true;
+                event.target.disabled = true;
+                commentBox.disabled = true;
+                //row.querySelector('.save-comment').disabled = true;
+                //row.querySelector('.edit').style.display = 'inline-block';
+            } else {
+                alert('Failed to reject submission: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while rejecting the submission.');
+        });
+    }
+});
 
     document.querySelectorAll('.save-comment').forEach(button => {
         button.addEventListener('click', function () {
             let row = this.closest('tr');
             let commentBox = row.querySelector('textarea');
-            let editBtn = row.querySelector('.edit');
+            //let editBtn = row.querySelector('.edit');
 
             if (commentBox.value.trim() === '') {
                 alert('Please enter a comment before saving.');
@@ -121,7 +163,7 @@
             row.querySelector('.reject').disabled = true;
 
             // Show edit button for rejected comments
-            editBtn.style.display = 'inline-block';
+            //editBtn.style.display = 'inline-block';
         });
     });
 
@@ -129,13 +171,16 @@
         button.addEventListener('click', function () {
             let row = this.closest('tr');
             let commentBox = row.querySelector('textarea');
-            let saveBtn = row.querySelector('.save-comment');
+            //let saveBtn = row.querySelector('.save-comment');
 
             // Enable editing
             commentBox.disabled = false;
-            saveBtn.disabled = false;
+            //saveBtn.disabled = false;
         });
     });
+    
+
+
 </script>
 </body>
 
