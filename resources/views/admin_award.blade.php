@@ -19,25 +19,37 @@
             <thead>
                 <tr>
                     <th>Student Name</th>
-                    <th>Date of Claim</th>
+                    <th>Barangay</th>
                     <th>Amount Received</th>
+                    <th>Email</th>
+                    <th>Contact No</th>
+                    <th>Date of Claim</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td data-label="Student Name">John Doe</td>
-                    <td data-label="Date of Claim">March 15, 2025</td>
+                    <td data-label="Barangay">Nasugbu</td>
                     <td data-label="Amount Received">$1,500</td>
-                </tr>
-                <tr>
-                    <td data-label="Student Name">Jane Smith</td>
+                    <td data-label="Email">John@gmail.com</td>
+                    <td data-label="Contact Number">09476458293</td>
                     <td data-label="Date of Claim">March 15, 2025</td>
-                    <td data-label="Amount Received">$1,200</td>
                 </tr>
                 <tr>
-                    <td data-label="Student Name">Michael Johnson</td>
-                    <td data-label="Date of Claim">March 14, 2025</td>
-                    <td data-label="Amount Received">$1,800</td>
+                <td data-label="Student Name">John Doe</td>
+                    <td data-label="Barangay">Nasugbu</td>
+                    <td data-label="Amount Received">$1,500</td>
+                    <td data-label="Email">John@gmail.com</td>
+                    <td data-label="Contact Number">09476458293</td>
+                    <td data-label="Date of Claim">March 15, 2025</td>
+                </tr>
+                <tr>
+                <td data-label="Student Name">John Doe</td>
+                    <td data-label="Barangay">Nasugbu</td>
+                    <td data-label="Amount Received">$1,500</td>
+                    <td data-label="Email">John@gmail.com</td>
+                    <td data-label="Contact Number">09476458293</td>
+                    <td data-label="Date of Claim">March 15, 2025</td>
                 </tr>
             </tbody>
         </table>
