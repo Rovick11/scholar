@@ -63,11 +63,13 @@ $(document).ready(function () {
 
     $("#loginButton").click(function (event) {
         event.preventDefault(); // Prevent default button behavior
-
+    
         let form = $("#loginForm"); // Get the form element
         let formData = form.serialize(); // Serialize form data
-        
-
+        let loginButton = $("#loginButton"); // Get button element
+   
+        loginButton.prop("disabled", true).html('<i class="fa fa-spinner fa-spin"></i> Logging in...');
+    
         $.ajax({
             url: form.attr("action"), // Get form action URL
             type: "POST",
@@ -83,23 +85,20 @@ $(document).ready(function () {
                     }).then(() => {
                         if (response.role === "superAdmin" || response.role === "admin") {
                             window.location.href = "/admindash";
-                        } else if (response.role === "user"){
+                        } else if (response.role === "user") {
                             window.location.href = "/userdash";
                         }
-                     
                     });
                 } else {
-
-                     if (response.role === "pending"){
+                    if (response.role === "pending") {
                         Swal.fire({
-                           icon: "warning",
+                            icon: "warning",
                             title: "Your account is pending approval",
                             text: "Please wait for an administrator to approve your account.",
                             confirmButtonColor: "#f1c40f",
                             heightAuto: false
                         });
-                    }
-                    else{
+                    } else {
                         Swal.fire({
                             icon: "error",
                             title: "Login Failed",
@@ -112,7 +111,7 @@ $(document).ready(function () {
             },
             error: function (xhr) {
                 let errorMessage = "An error occurred. Please try again.";
-
+    
                 if (xhr.responseJSON) {
                     if (xhr.responseJSON.errors) {
                         // Handle structured validation errors
@@ -126,17 +125,22 @@ $(document).ready(function () {
                         errorMessage = xhr.responseJSON.error;
                     }
                 }
-
+    
                 Swal.fire({
                     icon: "error",
                     title: "Validation Error",
-                    html: errorMessage, // Use 'html' to properly format error messages
+                    html: "Incorrect Credentials", // Use 'html' to properly format error messages
                     confirmButtonColor: "#d33",
                     heightAuto: false
                 });
+            },
+            complete: function () {
+                // Re-enable button and restore original text
+                loginButton.prop("disabled", false).html("Login");
             }
         });
     });
+    
 
     $("#logoutButton").click(function (event) {
         event.preventDefault(); // Prevent default link behavior
@@ -362,6 +366,7 @@ $(document).ready(function () {
                         $("#otpStatus").text("❌ Invalid OTP").removeClass("text-success").addClass("text-danger");
                         $("#password, #password_confirmation").prop("disabled", true);
                         $("#updateBtn").prop("disabled", true);
+                        $('#nextStep').prop('disabled', true).addClass('disabled-btn');
                     }
                 },
                 error: function (xhr) {

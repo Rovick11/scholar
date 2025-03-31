@@ -81,6 +81,8 @@ class EmailOtpController extends Controller
         'password' => 'nullable|min:8|confirmed',
         'barangay' => 'required',
         'sex' => 'required',
+        'middleInitial' => 'string',
+        'university' => 'required',
     ]);
 
     // Check OTP before proceeding with update
@@ -104,6 +106,8 @@ class EmailOtpController extends Controller
         'contactNo' => $request->phone,
         'barangay' => $request->barangay,
         'sex' => $request->sex,
+        'middleName' => $request->middleInitial,
+        'university' => $request->university,
     ];
 
     // Update password only if provided

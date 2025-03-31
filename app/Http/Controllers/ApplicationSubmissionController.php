@@ -267,6 +267,21 @@ class ApplicationSubmissionController extends Controller
                 return view('admin_scholarAward', ['showApproved' => $scholarApproved]);
         }
 
+        public function showDashboard()
+        {
+            // Fetch counts based on status
+            $pendingCount = ApplicationSubmission::where('status', 'pending')->count();
+            $awardedCount = ApplicationSubmission::where('status', 'approved')->count();
+            $totalUsers = DB::table('users')->count();
+        
+            // Pass data to the view
+            return view('admindash', [
+                'pendingCount' => $pendingCount,
+                'awardedCount' => $awardedCount,
+                'totalUsers' => $totalUsers
+            ]);
+        }
+
 
 }
 

@@ -68,7 +68,7 @@
                     @error('lastName') <span class="text-danger">{{ $message }}</span> @enderror
 
                     <div class="floating-label">
-                        <input type="text" id="middleInitial" name="middleInitial" required>
+                        <input type="text" id="middleInitial" name="middleInitial" value = "N/A">
                         <label for="middleInitial">Middle Initial</label>
                     </div>
 
@@ -171,7 +171,7 @@
 
 
                 <button type="button" id="prevStep" class="btn btn-secondary">Back</button>
-                <input type="button" value="Next" id="nextStep1" class="disabled-btn">
+                <input type="button" value="Next" id="nextStep1" class="disabled-btn" disabled>
             </div>
 
             <div id="step3" style="display: none;">

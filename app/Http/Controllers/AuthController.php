@@ -24,6 +24,8 @@ class AuthController extends Controller
                 'contact' => 'required|string|max:10',
                 'barangay' => 'required',
                 'sex' => 'required',
+                'middleInitial' => 'string',
+                'university' => 'required',
                 'password' => ['required', 'confirmed', Rules\Password::defaults()]
             ]);
 
@@ -39,6 +41,8 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
                 'barangay' => $request->barangay,
                 'sex' => $request->sex,
+                'middleName' => $request->middleInitial,
+                'university' => $request->university,
             ]);
 
             Log::info('User  registered successfully', ['user_id' => $user->id]);
@@ -148,6 +152,8 @@ class AuthController extends Controller
             'phone' => 'required|string|max:10',
             'barangay' => 'required',
             'sex' => 'required',
+            'middleInitial' => 'required',
+            'university' => 'required',
            
         ]);
     
@@ -160,6 +166,8 @@ class AuthController extends Controller
             'contactNo' => $request->phone,
             'barangay' => $request->barangay,
             'sex' => $request->sex,
+            'middleName' => $request->middleInitial,
+            'university' => $request->university,
 
         ]);
     
