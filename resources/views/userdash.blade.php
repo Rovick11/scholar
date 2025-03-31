@@ -199,13 +199,24 @@
             <label for="university">University</label>
         </div>
         <div class="input-group">
-            <input type="text" id="year" name="year" class="small-input" value="{{ $user->year }}" required placeholder=" ">
-            <label for="year">Year</label>
-        </div>
-        <div class="input-group">
-            <input type="text" id="semester" name="semester" class="small-input" value="{{ $user->semester }}" required placeholder=" ">
-            <label for="semester">Semester</label>
-        </div>
+    <select id="year" name="year"  required>
+        <option value="" disabled selected></option>
+        <option value="1st">1st year</option>
+        <option value="2nd">2nd year</option>
+        <option value="3rd">3rd year</option>
+        <option value="4th">4th year</option>
+    </select>
+    <label for="year">Year</label>
+</div>
+
+<div class="input-group">
+    <select id="semester" name="semester" required>
+        <option value="" disabled selected></option>
+        <option value="1st">1st sem</option>
+        <option value="2nd">2nd sem</option>
+    </select>
+    <label for="semester">Semester</label>
+</div>
         <div class="input-group">
             <input type="text" id="course" name="course" class="small-input1" value="{{ $user->course }}" required placeholder=" ">
             <label for="course">Course</label>
