@@ -112,7 +112,7 @@
         </div>
         
         <div class="input-group">
-            <input type="text" id="middle-initial" name="middle_initial" class="small-input" value="{{ $user->middleInitial }}" required placeholder=" ">
+            <input type="text" id="middle-initial" name="middle_initial" class="small-input" value="{{ $user->middleName }}" required placeholder=" ">
             <label for="middle-initial">Middle Initial</label>
         </div>
         

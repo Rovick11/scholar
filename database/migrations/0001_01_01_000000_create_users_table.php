@@ -23,7 +23,10 @@ return new class extends Migration
             $table->string('role');
             $table->string('password');
             $table->string('middleName');
-            $table->string('university');       
+            $table->string('university');
+            $table->string('course');  
+            $table->string('year');      
+            $table->string('semester');    
             $table->rememberToken();
             $table->timestamps();
         });

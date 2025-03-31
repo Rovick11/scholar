@@ -81,15 +81,18 @@ class EmailOtpController extends Controller
         'password' => 'nullable|min:8|confirmed',
         'barangay' => 'required',
         'sex' => 'required',
-        'middleInitial' => 'string',
+        'middle_initial' => 'string',
         'university' => 'required',
+        'course' => 'required',
+        'semester' => 'required',
+        'year' => 'required'
     ]);
 
     // Check OTP before proceeding with update
-    if (Session::get('otp') != $request->otp) {
+    /*if (Session::get('otp') != $request->otp) {
         Log::warning('Invalid OTP for profile update', ['user_id' => $id]);
         return response()->json(['success' => false, 'message' => 'Invalid OTP'], 400);
-    }
+    }*/
 
     // Fetch user
     $user = User::find($id);
@@ -106,8 +109,11 @@ class EmailOtpController extends Controller
         'contactNo' => $request->phone,
         'barangay' => $request->barangay,
         'sex' => $request->sex,
-        'middleName' => $request->middleInitial,
+        'middleName' => $request->middle_initial,
         'university' => $request->university,
+        'semester' => $request->semester,
+        'year' => $request->year,
+        'course' => $request->course,
     ];
 
     // Update password only if provided

@@ -192,6 +192,9 @@ $(document).ready(function () {
             const form = $(this);
             const formData = new FormData(this);
     
+            console.log("Form submission intercepted.");
+            console.log("Form action URL:", form.attr("action"));
+    
             // Show confirmation prompt before updating
             Swal.fire({
                 title: "Are you sure?",
@@ -203,15 +206,19 @@ $(document).ready(function () {
                 confirmButtonText: "Yes, update it!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Proceed with AJAX request if user confirms
+                    console.log("User confirmed update. Sending AJAX request...");
+    
                     $.ajax({
                         url: form.attr("action"),
                         type: "POST", // Use POST instead of PUT
                         data: formData,
-                        processData: false,  
-                        contentType: false,  
+                        processData: false,
+                        contentType: false,
                         headers: { "X-HTTP-Method-Override": "PUT" },
                         success: function (response) {
+                            console.log("AJAX request successful.");
+                            console.log("Response:", response);
+    
                             if (response.success) {
                                 form[0].reset();
                                 Swal.fire({
@@ -220,18 +227,26 @@ $(document).ready(function () {
                                     confirmButtonColor: "#3085d6",
                                     heightAuto: false
                                 }).then(() => {
+                                    console.log("Redirecting to /userdash...");
                                     window.location.href = "/userdash";
-                               
                                 });
                             }
                         },
-                        error: function (xhr) {
+                        error: function (xhr, status, error) {
+                            console.error("AJAX request failed.");
+                            console.error("Status:", status);
+                            console.error("Error:", error);
+                            console.error("XHR response:", xhr);
+    
                             let errorMessage = "An error occurred. Please try again.";
     
                             if (xhr.responseJSON) {
+                                console.error("XHR responseJSON:", xhr.responseJSON);
+    
                                 if (xhr.responseJSON.errors) {
                                     errorMessage = "<ul>";
                                     Object.keys(xhr.responseJSON.errors).forEach(field => {
+                                        console.error(`Error in field '${field}':`, xhr.responseJSON.errors[field][0]);
                                         errorMessage += `<li><strong>${field}:</strong> ${xhr.responseJSON.errors[field][0]}</li>`;
                                     });
                                     errorMessage += "</ul>";
@@ -243,15 +258,19 @@ $(document).ready(function () {
                             Swal.fire({
                                 icon: "error",
                                 title: "Update Failed",
-                                html: errorMessage, 
+                                html: errorMessage,
                                 confirmButtonColor: "#d33",
                                 heightAuto: false
                             });
                         }
                     });
+                } else {
+                    console.log("User canceled the update.");
                 }
             });
         });
+    
+    
         function validateForm() {
             let isValid = true;
     

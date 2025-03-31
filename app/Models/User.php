@@ -28,6 +28,9 @@ class User extends Authenticatable
         'password',
         'barangay',
         'sex',
+        'course',
+        'semester',
+        'year',
         'university'
     ];
 
