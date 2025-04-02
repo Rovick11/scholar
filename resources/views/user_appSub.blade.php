@@ -58,9 +58,41 @@
             <div id="step2" style="display: none;">
                 <!-- Back button at the top -->
             <div class="back-container">
-                <button type="button" id="prevStepSub" class="back-btn">&larr; </button>
+                <button type="button" id="fourthStepSub" class="back-btn">&larr; </button>
             </div>
-                <h3>Step 2: Document Submission</h3>
+                <h3>Step 2: Educational Information</h3>
+
+            <div class="form-group">
+            <label for="university">University</label>
+                <input type="text" id="university" name="university" class="small-input" value="{{ $user->university }}" readonly required placeholder=" ">
+            </div>
+
+            <div class="form-group">
+            <label for="year">Year</label>
+            <input value ="{{ $user->year }}"readonly required>
+            </div>
+
+            <div class="form-group">
+            <label for="semester">Semester</label>
+            <input value ="{{ $user->semester}}"readonly required>
+            </div>
+
+            <div class="form-group">
+            <label for="course">Course</label>
+                <input type="text" id="course" name="course" class="small-input1" value="{{ $user->course }}" readonly required placeholder=" ">
+            </div>
+            <div class="btn-container1">
+                            <button type="button" id="thirdStepSub" class="btn">Next</button>
+                        </div>
+                    </div>
+
+
+            <div id="step3" style="display: none;">
+                <!-- Back button at the top -->
+            <div class="back-container">
+                <button type="button" id="secStepSub" class="back-btn">&larr; </button>
+            </div>
+                <h3>Step 3: Document Submission</h3>
 
                 <div class="form-group">
                     <label for="cor">Certificate of Registration</label>

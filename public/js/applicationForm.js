@@ -76,8 +76,20 @@
 $('#nextStepSub').click(function(){
     $('#step1').hide();
     $('#step2').show();
+    $('#step3').hide();
 });
-$('#prevStepSub').click(function(){
+$('#secStepSub').click(function(){
+    $('#step1').hide();
+    $('#step2').show();
+    $('#step3').hide();
+});
+$('#thirdStepSub').click(function(){
+    $('#step1').hide();
+    $('#step2').hide();
+    $('#step3').show();
+});
+$('#fourthStepSub').click(function(){
     $('#step1').show();
     $('#step2').hide();
+    $('#step3').hide();
 });
