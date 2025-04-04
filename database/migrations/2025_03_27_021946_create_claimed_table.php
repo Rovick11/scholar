@@ -13,12 +13,7 @@ return new class extends Migration
     {
         Schema::create('claimed', function (Blueprint $table) {
             $table->id();
-            $table->string('firstName');
-            $table->string('lastName');
             $table->double('amount');
-            $table->string('email')->unique(); // Ensure this line is present
-            $table->double('contactNo');
-            $table->string('barangay');
             $table->timestamp('claimed_at');
         });
     }

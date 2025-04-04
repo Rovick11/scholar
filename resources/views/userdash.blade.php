@@ -203,7 +203,7 @@
         </div>
         <div class="input-group">
     <select id="year" name="year"  required>
-        <option value="" disabled selected></option>
+        <option value="{{ $user->year }}">{{ $user->year }}</option>
         <option value="1st">1st year</option>
         <option value="2nd">2nd year</option>
         <option value="3rd">3rd year</option>
@@ -214,7 +214,7 @@
 
 <div class="input-group">
     <select id="semester" name="semester" required>
-        <option value="" disabled selected></option>
+        <option value = "{{ $user->semester }}">{{ $user->semester }}</option>
         <option value="1st">1st sem</option>
         <option value="2nd">2nd sem</option>
     </select>

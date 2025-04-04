@@ -16,20 +16,20 @@ return new class extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('sex');
-            $table->string('email')->unique(); // Ensure this line is present
+            $table->string('email')->unique();
             $table->date('birthDate');
             $table->double('contactNo');
             $table->string('barangay');
             $table->string('role');
             $table->string('password');
-            $table->string('middleName');
-            $table->string('university');
-            $table->string('course');  
-            $table->string('year');      
-            $table->string('semester');    
+            $table->string('middleName'); // Allow NULL
+            $table->string('university'); // Allow NULL
+            $table->string('course')->nullable();  // Allow NULL
+            $table->string('year')->nullable();    // Allow NULL
+            $table->string('semester')->nullable(); // Allow NULL
             $table->rememberToken();
             $table->timestamps();
-        });
+        });        
 
        
         Schema::create('password_reset_tokens', function (Blueprint $table) {
