@@ -66,6 +66,8 @@ $(document).ready(function () {
     });
 });
 
+
+
 function showUpdateForm(docType) {
     document.getElementById('document_type').value = docType;
     var updateModal = new bootstrap.Modal(document.getElementById('updateModal'));

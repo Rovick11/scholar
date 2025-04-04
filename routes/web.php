@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailOtpController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\sendEmail;
 Route::get('/', function () {
     return view('index');
 });
@@ -61,6 +62,7 @@ Route::put('/documents/update/{id}', [ApplicationSubmissionController::class, 'u
 Route::post('/send-otp', [EmailOtpController::class, 'sendOtp'])->name('send.otp');
 Route::post('/verify-otp', [EmailOtpController::class, 'verifyOtp'])->name('verify.otp');
 Route::put('/update-profile/{id}', [EmailOtpController::class, 'updateProfile'])->name('userprofile.update');
+Route::post('/send-email/{id}', [sendEmail::class, 'sendEmail'])->name('sendemail');
 
 
 Route::get('/admin_scholarAward', [ApplicationSubmissionController::class, 'showApproved'])->name('admin_scholarAward');

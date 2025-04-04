@@ -67,24 +67,27 @@
 </div>
 
 <!-- Chat Button -->
-<div class="chat-button" onclick="toggleChatBox()">
-        <i class="fas fa-comments"></i>
-    </div>
+<div class="email-button" onclick="toggleEmailForm()">
+    <i class="fas fa-envelope"></i>
+</div>
 
-    <!-- Chat Box -->
-    <div class="chat-box" id="chatBox">
-        <div class="chat-header">
-            <span>Support Chat</span>
-            <button class="close-chat" onclick="toggleChatBox()">&times;</button>
-        </div>
-        <div class="chat-body">
-            <!-- Chat messages will appear here -->
-        </div>
-        <div class="chat-footer">
-            <input type="text" placeholder="Type your message..." />
-            <button>Send</button>
-        </div>
+<!-- Email Form -->
+<div class="email-form" id="emailForm">
+    <div class="email-header">
+        <span>Contact Support</span>
+        <button class="close-email" type="button" onclick="toggleEmailForm()">&times;</button>
     </div>
+    <form id="emailFormContent" action="{{ route('sendemail', ['id' => $user->id ?? 0]) }}" method="POST" enctype="multipart/form-data">
+         @csrf
+        <div class="email-body">
+            <input type="text" id="subject" name ="subject" placeholder="Subject" required />
+            <textarea name="message" placeholder="Type your message here..." required></textarea>
+        </div>
+        <div class="email-footer">
+            <button type="submit" id="sendEmail">Send Email</button>
+        </div>
+    </form>
+</div>
     
 <!-- Overlay Background -->
 <div id="overlay" class="overlay" onclick="closePopup()"></div>
