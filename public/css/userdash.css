@@ -457,7 +457,7 @@ margin-top: 5px;
 }
 
 /* Chat Button */
-.chat-button {
+.email-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -475,12 +475,12 @@ margin-top: 5px;
     z-index: 1000;
 }
 
-.chat-button i {
+.email-button i {
     font-size: 24px;
 }
 
 /* Chat Box */
-.chat-box {
+.email-form {
     position: fixed;
     bottom: 90px;
     right: 20px;
@@ -494,7 +494,7 @@ margin-top: 5px;
     z-index: 1000;
 }
 
-.chat-header {
+.email-header {
     background-color: #007BFF;
     color: white;
     padding: 10px;
@@ -505,25 +505,25 @@ margin-top: 5px;
     align-items: center;
 }
 
-.chat-body {
+.email-body {
     padding: 10px;
     height: 200px;
     overflow-y: auto;
 }
 
-.chat-footer {
+.email-footer {
     display: flex;
     border-top: 1px solid #ddd;
 }
 
-.chat-footer input {
+.email-footer input {
     flex: 1;
     padding: 10px;
     border: none;
     border-bottom-left-radius: 10px;
 }
 
-.chat-footer button {
+.email-footer button {
     background-color: #007BFF;
     color: white;
     border: none;

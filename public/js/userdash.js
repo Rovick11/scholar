@@ -107,8 +107,8 @@ window.onclick = function(event) {
     }
 }
 
-function toggleChatBox() {
-    const chatBox = document.getElementById('chatBox');
+function toggleEmailForm() {
+    const chatBox = document.getElementById('emailForm');
     if (chatBox.style.display === 'none' || chatBox.style.display === '') {
         chatBox.style.display = 'flex';
     } else {
@@ -144,5 +144,71 @@ function toggleChatBox() {
         
         closePopup();
     }
+
+
+    $(document).ready(function () {
+        const sendEmailButton = $("#sendEmail");
+    
+        // Ensure CSRF Token is set for all AJAX requests
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+    
+        $("#emailFormContent").submit(function (e) {
+            e.preventDefault(); // Prevent default form submission
+    
+            let subject = $("#subject").val().trim();
+            let message = $("textarea[name='message']").val().trim();
+            let actionUrl = $(this).attr("action");
+    
+            if (!subject || !message) {
+                Swal.fire({
+                    icon: "warning",
+                    title: "All fields are required",
+                    confirmButtonColor: "#3085d6",
+                    heightAuto: false,
+                });
+                return;
+            }
+    
+            sendEmailButton.prop("disabled", true).text("Sending...");
+    
+            $.ajax({
+                url: actionUrl,
+                type: "POST",
+                data: { subject: subject, message: message },
+                success: function (response) {
+                    console.log("Email sent successfully:", response);
+    
+                    Swal.fire({
+                        icon: "success",
+                        title: "Email Sent Successfully",
+                        confirmButtonColor: "#3085d6",
+                        heightAuto: false,
+                    });
+    
+                    $("#emailFormContent")[0].reset(); // Clear form fields
+                    sendEmailButton.prop("disabled", false).text("Send Email");
+                    toggleEmailForm(); // Close email form
+                },
+                error: function (xhr) {
+                    console.error("Error sending email:", xhr.responseText);
+    
+                    Swal.fire({
+                        icon: "error",
+                        title: "Failed to Send Email",
+                        text: "Please try again later.",
+                        confirmButtonColor: "#d33",
+                        heightAuto: false,
+                    });
+    
+                    sendEmailButton.prop("disabled", false).text("Send Email");
+                },
+            });
+        });
+    });
+    
 
    
