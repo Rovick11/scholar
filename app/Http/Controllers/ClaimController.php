@@ -5,21 +5,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class ClaimController extends Controller
+class ScholarshipController extends Controller
 {
     public function claimScholarship(Request $request)
 {
     try {
         Log::info('Claim Scholarship Request:', $request->all());
 
-        // Validate request
+        // Validate that user_id exists in application_submissions, not users
         $validated = $request->validate([
-            'user_id' => 'required|exists:users,id',
+            'user_id' => 'required|exists:application_submissions,user_id',
             'amount' => 'required|numeric',
             'claimed_at' => 'required|date',
         ]);
 
-        // Insert into database
+        // Insert into claimed table
         DB::table('claimed')->insert([
             'user_id' => $validated['user_id'],
             'amount' => $validated['amount'],
@@ -48,5 +48,6 @@ public function showApproved()
 
     return view('admin_scholarAward', compact('showApproved'));
 }
+
 
 }

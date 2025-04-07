@@ -12,14 +12,14 @@ class ScholarshipController extends Controller
     try {
         Log::info('Claim Scholarship Request:', $request->all());
 
-        // Validate request
+        // Validate that user_id exists in application_submissions, not users
         $validated = $request->validate([
-            'user_id' => 'required|exists:users,id',
+            'user_id' => 'required|exists:application_submissions,user_id',
             'amount' => 'required|numeric',
             'claimed_at' => 'required|date',
         ]);
 
-        // Insert into database
+        // Insert into claimed table
         DB::table('claimed')->insert([
             'user_id' => $validated['user_id'],
             'amount' => $validated['amount'],
@@ -35,6 +35,7 @@ class ScholarshipController extends Controller
         return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
     }
 }
+
 
 public function showApproved()
 {

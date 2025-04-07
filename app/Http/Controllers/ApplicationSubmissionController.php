@@ -252,23 +252,28 @@ class ApplicationSubmissionController extends Controller
 
         
         public function showApproved(Request $request)
-{
-    $scholarApproved = DB::table('application_submissions')
-        ->join('users', 'application_submissions.user_id', '=', 'users.id')
-        ->select(
-            'users.firstName',
-            'users.lastName',
-            'users.email',
-            'users.contactNo',
-            'application_submissions.id', // Include the application ID
-            'application_submissions.status'
-        )
-        ->where('application_submissions.status', 'approved') // Filter for approved applications
-        ->get();
-
-    return view('admin_scholarAward', ['showApproved' => $scholarApproved]);
-}
-
+        {
+            // Get user_ids that have already claimed
+            $claimedUserIds = DB::table('claimed')->pluck('user_id');
+        
+            // Get approved applications excluding those in claimed
+            $scholarApproved = DB::table('application_submissions')
+                ->join('users', 'application_submissions.user_id', '=', 'users.id')
+                ->select(
+                    'users.firstName',
+                    'users.lastName',
+                    'users.email',
+                    'users.contactNo',
+                    'application_submissions.id', // Include the application ID
+                    'application_submissions.status'
+                )
+                ->where('application_submissions.status', 'approved')
+                ->whereNotIn('application_submissions.user_id', $claimedUserIds) // Exclude claimed users
+                ->get();
+        
+            return view('admin_scholarAward', ['showApproved' => $scholarApproved]);
+        }
+        
         public function showDashboard()
         {
             // Fetch counts based on status
