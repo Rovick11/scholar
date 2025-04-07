@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmailOtpController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ClaimController;
+use App\Http\Controllers\ScholarshipController;
+
 Route::get('/', function () {
     return view('index');
 });
@@ -25,6 +28,11 @@ Route::get('/admin_userAppMan', [ApplicationSubmissionController::class, 'showSu
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/submissions/{id}/approve', [ApplicationSubmissionController::class, 'approveSubmission'])->name('submissions.approve');
 Route::post('/submissions/{id}/reject', [ApplicationSubmissionController::class, 'reject'])->name('submission.reject');
+
+
+Route::post('/claim-scholarship', [ClaimController::class, 'claimScholarship']);
+Route::post('/claim-scholarship', [ScholarshipController::class, 'claimScholarship']);
+
 
 
 Route::middleware(['auth'])->group(function () {

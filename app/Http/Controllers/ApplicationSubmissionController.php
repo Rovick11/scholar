@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\ApplicationSubmission;
+use App\Models\Claimed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -251,21 +252,22 @@ class ApplicationSubmissionController extends Controller
 
         
         public function showApproved(Request $request)
-        {
-            $scholarApproved = DB::table('application_submissions')
-                ->join('users', 'application_submissions.user_id', '=', 'users.id')
-                ->select(
-                    'users.firstName',
-                    'users.lastName',
-                    'users.email',
-                    'users.contactNo',
-                    'application_submissions.status'
-                )
-                ->where('application_submissions.status', 'approved') // Filter for approved applications
-                ->get();
+{
+    $scholarApproved = DB::table('application_submissions')
+        ->join('users', 'application_submissions.user_id', '=', 'users.id')
+        ->select(
+            'users.firstName',
+            'users.lastName',
+            'users.email',
+            'users.contactNo',
+            'application_submissions.id', // Include the application ID
+            'application_submissions.status'
+        )
+        ->where('application_submissions.status', 'approved') // Filter for approved applications
+        ->get();
 
-                return view('admin_scholarAward', ['showApproved' => $scholarApproved]);
-        }
+    return view('admin_scholarAward', ['showApproved' => $scholarApproved]);
+}
 
         public function showDashboard()
         {
@@ -281,7 +283,36 @@ class ApplicationSubmissionController extends Controller
                 'totalUsers' => $totalUsers
             ]);
         }
+        public function claimScholarship(Request $request)
+{
+    // Validate the incoming request
+    $request->validate([
+        'user_id' => 'required|exists:application_submissions,id', // Ensure the application ID exists
+        'amount' => 'required|numeric',
+        'claimed_at' => 'required|date',
+    ]);
 
+    // Create a new record in the claimed table
+    try {
+        Claimed::create([
+            'user_id' => $request->user_id, // Assuming user_id refers to the application ID
+            'amount' => $request->amount,
+            'claimed_at' => $request->claimed_at,
+        ]);
+
+        // Optionally, you can update the application status to 'claimed' or similar
+        $application = ApplicationSubmission::find($request->user_id);
+        if ($application) {
+            $application->status = 'claimed'; // Update status if needed
+            $application->save();
+        }
+
+        return response()->json(['success' => true, 'message' => 'Scholarship claimed successfully.']);
+    } catch (\Exception $e) {
+        Log::error('Error claiming scholarship', ['error' => $e->getMessage()]);
+        return response()->json(['success' => false, 'message' => 'Failed to claim scholarship.'], 500);
+    }
+}
 
 }
 
