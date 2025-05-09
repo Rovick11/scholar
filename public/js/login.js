@@ -430,3 +430,45 @@ $('.login-reg-panel input[type="radio"]').on('change', function () {
         $('.register-show').removeClass('show-log-panel');
     }
 });
+
+  function togglePassword1(icon) {
+    const passwordField = document.getElementById("passwordLogin");
+    
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    } else {
+      passwordField.type = "password";
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
+  }
+
+  function togglePassword2(icon) {
+    const passwordField = document.getElementById("password");
+    
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    } else {
+      passwordField.type = "password";
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
+  }
+
+  function togglePassword3(icon) {
+    const passwordField = document.getElementById("confirmPassword");
+    
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    } else {
+      passwordField.type = "password";
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
+  }

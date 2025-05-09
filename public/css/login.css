@@ -292,6 +292,24 @@ a {
         cursor: not-allowed;
     }
     
-
+    .password-container {
+        position: relative;
+    }
+    
+    .password-container input {
+        width: 100%;
+        padding-right: 40px; /* room for the eye icon */
+    }
+    
+    .toggle-password {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #999;
+        font-size: 18px;
+    }
+    
    
     

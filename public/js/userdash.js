@@ -211,4 +211,13 @@ function toggleEmailForm() {
     });
     
 
-   
+    function toggleEmailForm() {
+        const form = document.getElementById("emailForm");
+        form.style.display = form.style.display === "flex" ? "none" : "flex";
+    }
+    function toggleNotifications() {
+        const dropdown = document.getElementById("notificationDropdown");
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+    
+    

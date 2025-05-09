@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <title>Login Form</title>
@@ -37,11 +38,12 @@
                         <label for="emailLogin">Email</label>
                     </div>
 
-                    <div class="floating-label">
+                    <div class="floating-label password-container">
                         <input type="password" id="passwordLogin" name="password" required>
                         <label for="passwordLogin">Password</label>
+                        <i class="fa-solid fa-eye toggle-password" onclick="togglePassword1(this)"></i>
                     </div>
-                    
+
                     <input type="button" value="Login" id = "loginButton">
                         <a href="#">Forgot password?</a>
                     </div>
@@ -177,15 +179,17 @@
             <div id="step3" style="display: none;">
                 <h3>Step 3: Account Security</h3>
 
-                <div class="floating-label">
+                <div class="floating-label password-container">
                     <input type="password" id="password" name="password" required>
                     <label for="password">Password</label>
+                    <i class="fa-solid fa-eye toggle-password" onclick="togglePassword2(this)"></i>
                 </div>
                 @error('password') <span class="text-danger">{{ $message }}</span> @enderror
 
-                <div class="floating-label">
+                <div class="floating-label password-container">
                     <input type="password" id="confirmPassword" name="password_confirmation" required>
                     <label for="confirmPassword">Confirm Password</label>
+                    <i class="fa-solid fa-eye toggle-password" onclick="togglePassword3(this)"></i>
                 </div>
 
                 <div class="floating-label">

@@ -72,15 +72,21 @@
 </div>
 
 <!-- Email Form -->
+<!-- Floating Email Button -->
+<button class="email-button" onclick="toggleEmailForm()">
+    <i class="fas fa-envelope"></i>
+</button>
+
+<!-- Email Form Box -->
 <div class="email-form" id="emailForm">
     <div class="email-header">
         <span>Contact Support</span>
         <button class="close-email" type="button" onclick="toggleEmailForm()">&times;</button>
     </div>
     <form id="emailFormContent" action="{{ route('sendemail', ['id' => $user->id ?? 0]) }}" method="POST" enctype="multipart/form-data">
-         @csrf
+        @csrf
         <div class="email-body">
-            <input type="text" id="subject" name ="subject" placeholder="Subject" required />
+            <input type="text" id="subject" name="subject" placeholder="Subject" required />
             <textarea name="message" placeholder="Type your message here..." required></textarea>
         </div>
         <div class="email-footer">
@@ -88,6 +94,7 @@
         </div>
     </form>
 </div>
+
     
 <!-- Overlay Background -->
 <div id="overlay" class="overlay" onclick="closePopup()"></div>
