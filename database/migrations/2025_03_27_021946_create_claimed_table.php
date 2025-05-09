@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('claimed', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Assuming users table exists
             $table->double('amount');
             $table->timestamp('claimed_at');
+            $table->timestamps();
         });
+        
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migratdatabase/migrations/2025_03_18_063821_create_notifications_table.phpions.
      */
     public function down(): void
     {
